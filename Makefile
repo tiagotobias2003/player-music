@@ -3075,7 +3075,45 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		fft.h \
 		playlistmodel.h \
 		/usr/include/qt5/QtCore/QAbstractItemModel \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		/usr/include/qt5/QtWidgets/QAction \
+		/usr/include/qt5/QtWidgets/qaction.h \
+		/usr/include/qt5/QtWidgets/qactiongroup.h \
+		/usr/include/qt5/QtWidgets/QApplication \
+		/usr/include/qt5/QtWidgets/qapplication.h \
+		/usr/include/qt5/QtWidgets/qdesktopwidget.h \
+		/usr/include/qt5/QtWidgets/QButtonGroup \
+		/usr/include/qt5/QtWidgets/qbuttongroup.h \
+		/usr/include/qt5/QtWidgets/QHBoxLayout \
+		/usr/include/qt5/QtWidgets/qboxlayout.h \
+		/usr/include/qt5/QtWidgets/qlayout.h \
+		/usr/include/qt5/QtWidgets/qlayoutitem.h \
+		/usr/include/qt5/QtWidgets/qgridlayout.h \
+		/usr/include/qt5/QtWidgets/QListView \
+		/usr/include/qt5/QtWidgets/qlistview.h \
+		/usr/include/qt5/QtWidgets/QMenu \
+		/usr/include/qt5/QtWidgets/qmenu.h \
+		/usr/include/qt5/QtWidgets/QMenuBar \
+		/usr/include/qt5/QtWidgets/qmenubar.h \
+		/usr/include/qt5/QtWidgets/QSpacerItem \
+		/usr/include/qt5/QtWidgets/QStatusBar \
+		/usr/include/qt5/QtWidgets/qstatusbar.h \
+		/usr/include/qt5/QtWidgets/QToolBar \
+		/usr/include/qt5/QtWidgets/qtoolbar.h \
+		/usr/include/qt5/QtWidgets/QVBoxLayout \
+		/usr/include/qt5/QtWidgets/QWidget \
+		controls.h \
+		abstractcontrol.h \
+		/usr/include/qt5/QtCore/QTime \
+		mediainfo.h \
+		abstractmediainfo.h \
+		/usr/include/qt5/QtGui/QStandardItem \
+		spectrograph.h \
+		abstractspectrograph.h \
+		/usr/include/qt5/QtGui/QPainter \
+		/usr/include/qt5/QtGui/QPen \
+		/usr/include/qt5/QtGui/QBrush \
+		/usr/include/qt5/QtGui/QGradient
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 spectrograph.o: spectrograph.cpp spectrograph.h \
@@ -3330,6 +3368,56 @@ controls.o: controls.cpp controls.h \
 		/usr/include/qt5/QtCore/QTime \
 		/usr/include/qt5/QtCore/qdatetime.h \
 		ui_controls.h \
+		/usr/include/qt5/QtCore/QVariant \
+		/usr/include/qt5/QtWidgets/QAction \
+		/usr/include/qt5/QtWidgets/qaction.h \
+		/usr/include/qt5/QtGui/qicon.h \
+		/usr/include/qt5/QtWidgets/qactiongroup.h \
+		/usr/include/qt5/QtWidgets/QApplication \
+		/usr/include/qt5/QtWidgets/qapplication.h \
+		/usr/include/qt5/QtCore/qcoreapplication.h \
+		/usr/include/qt5/QtCore/qeventloop.h \
+		/usr/include/qt5/QtWidgets/qdesktopwidget.h \
+		/usr/include/qt5/QtGui/qguiapplication.h \
+		/usr/include/qt5/QtGui/qinputmethod.h \
+		/usr/include/qt5/QtWidgets/QButtonGroup \
+		/usr/include/qt5/QtWidgets/qbuttongroup.h \
+		/usr/include/qt5/QtWidgets/QDial \
+		/usr/include/qt5/QtWidgets/qdial.h \
+		/usr/include/qt5/QtWidgets/qabstractslider.h \
+		/usr/include/qt5/QtWidgets/QHBoxLayout \
+		/usr/include/qt5/QtWidgets/qboxlayout.h \
+		/usr/include/qt5/QtWidgets/qlayout.h \
+		/usr/include/qt5/QtWidgets/qlayoutitem.h \
+		/usr/include/qt5/QtWidgets/qgridlayout.h \
+		/usr/include/qt5/QtWidgets/QHeaderView \
+		/usr/include/qt5/QtWidgets/qheaderview.h \
+		/usr/include/qt5/QtWidgets/qabstractitemview.h \
+		/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
+		/usr/include/qt5/QtWidgets/qframe.h \
+		/usr/include/qt5/QtCore/qabstractitemmodel.h \
+		/usr/include/qt5/QtCore/qitemselectionmodel.h \
+		/usr/include/qt5/QtWidgets/qabstractitemdelegate.h \
+		/usr/include/qt5/QtWidgets/qstyleoption.h \
+		/usr/include/qt5/QtWidgets/qabstractspinbox.h \
+		/usr/include/qt5/QtGui/qvalidator.h \
+		/usr/include/qt5/QtCore/qregularexpression.h \
+		/usr/include/qt5/QtWidgets/qslider.h \
+		/usr/include/qt5/QtWidgets/qstyle.h \
+		/usr/include/qt5/QtWidgets/qtabbar.h \
+		/usr/include/qt5/QtWidgets/qtabwidget.h \
+		/usr/include/qt5/QtWidgets/qrubberband.h \
+		/usr/include/qt5/QtWidgets/QLCDNumber \
+		/usr/include/qt5/QtWidgets/qlcdnumber.h \
+		/usr/include/qt5/QtCore/qbitarray.h \
+		/usr/include/qt5/QtWidgets/QLabel \
+		/usr/include/qt5/QtWidgets/qlabel.h \
+		/usr/include/qt5/QtWidgets/QPushButton \
+		/usr/include/qt5/QtWidgets/qpushbutton.h \
+		/usr/include/qt5/QtWidgets/qabstractbutton.h \
+		/usr/include/qt5/QtWidgets/QSlider \
+		/usr/include/qt5/QtWidgets/QSpacerItem \
+		/usr/include/qt5/QtWidgets/QVBoxLayout \
 		/usr/include/qt5/QtGui/QMouseEvent \
 		/usr/include/qt5/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controls.o controls.cpp
@@ -3539,6 +3627,43 @@ mediainfo.o: mediainfo.cpp mediainfo.h \
 		/usr/include/qt5/QtGui/qicon.h \
 		/usr/include/qt5/QtGui/QStandardItem \
 		ui_mediainfo.h \
+		/usr/include/qt5/QtCore/QVariant \
+		/usr/include/qt5/QtWidgets/QAction \
+		/usr/include/qt5/QtWidgets/qaction.h \
+		/usr/include/qt5/QtWidgets/qactiongroup.h \
+		/usr/include/qt5/QtWidgets/QApplication \
+		/usr/include/qt5/QtWidgets/qapplication.h \
+		/usr/include/qt5/QtCore/qcoreapplication.h \
+		/usr/include/qt5/QtCore/qeventloop.h \
+		/usr/include/qt5/QtWidgets/qdesktopwidget.h \
+		/usr/include/qt5/QtGui/qguiapplication.h \
+		/usr/include/qt5/QtGui/qinputmethod.h \
+		/usr/include/qt5/QtWidgets/QButtonGroup \
+		/usr/include/qt5/QtWidgets/qbuttongroup.h \
+		/usr/include/qt5/QtWidgets/QHBoxLayout \
+		/usr/include/qt5/QtWidgets/qboxlayout.h \
+		/usr/include/qt5/QtWidgets/qlayout.h \
+		/usr/include/qt5/QtWidgets/qlayoutitem.h \
+		/usr/include/qt5/QtWidgets/qgridlayout.h \
+		/usr/include/qt5/QtWidgets/QHeaderView \
+		/usr/include/qt5/QtWidgets/qheaderview.h \
+		/usr/include/qt5/QtWidgets/qabstractitemview.h \
+		/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
+		/usr/include/qt5/QtWidgets/qframe.h \
+		/usr/include/qt5/QtCore/qitemselectionmodel.h \
+		/usr/include/qt5/QtWidgets/qabstractitemdelegate.h \
+		/usr/include/qt5/QtWidgets/qstyleoption.h \
+		/usr/include/qt5/QtWidgets/qabstractspinbox.h \
+		/usr/include/qt5/QtGui/qvalidator.h \
+		/usr/include/qt5/QtCore/qregularexpression.h \
+		/usr/include/qt5/QtWidgets/qslider.h \
+		/usr/include/qt5/QtWidgets/qabstractslider.h \
+		/usr/include/qt5/QtWidgets/qstyle.h \
+		/usr/include/qt5/QtWidgets/qtabbar.h \
+		/usr/include/qt5/QtWidgets/qtabwidget.h \
+		/usr/include/qt5/QtWidgets/qrubberband.h \
+		/usr/include/qt5/QtWidgets/QLabel \
+		/usr/include/qt5/QtWidgets/qlabel.h \
 		/usr/include/qt5/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mediainfo.o mediainfo.cpp
 

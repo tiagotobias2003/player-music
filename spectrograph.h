@@ -12,6 +12,7 @@
 #include <QDebug>
 #include <QTimer>
 #include <QGradient>
+#include <QAction>
 
 // the maximum number of bands
 #define BAND_MAX 128
@@ -46,6 +47,9 @@ public slots:
   /*!brief Loads left and right mean audio values
    */
   void loadLevels(double left, double right);
+  void contextMenuEvent(QContextMenuEvent *e);
+protected slots:
+  void mostraMensagem();
 private:
   /*! \var QVector<int> spectrum
    * \brief used to store spectrum to be displayed
@@ -65,6 +69,10 @@ private:
   float barSpacing, barWidth, widgetHeight;
   double max;
   double time;
+  int drawMode;
+  QAction *changeSpectrumToBars;
+  QAction *changeSpectrumToTay;
+  QAction *changeSpectrumToTob;
 };
 
 #endif // SPECTROGRAM_H

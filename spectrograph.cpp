@@ -9,6 +9,9 @@
 #include <QTimerEvent>
 #include <QPainterPath>
 #include <QEasingCurve>
+#include <QAction>
+#include <QMessageBox>
+#include <QMenu>
 
 Spectrograph::Spectrograph(QWidget *parent) :
   AbstractSpectrograph(parent){
@@ -34,6 +37,19 @@ Spectrograph::Spectrograph(QWidget *parent) :
   decayBrush.setStyle(Qt::SolidPattern);
   barWidth = MIN_BARWIDTH;
   barSpacing = 1;
+    drawMode = 0;
+  changeSpectrumToBars = new QAction(QString("Bars"),this);
+  connect(changeSpectrumToBars,SIGNAL(triggered()),this,SLOT(mostraMensagem()));
+  changeSpectrumToTay = new QAction(QString("Tay"),this);
+  connect(changeSpectrumToTay,SIGNAL(triggered()),this,SLOT(mostraMensagem()));
+  changeSpectrumToTob = new QAction(QString("Tob"),this);
+  connect(changeSpectrumToTob,SIGNAL(triggered()),this,SLOT(mostraMensagem()));
+}
+
+void Spectrograph::mostraMensagem(void){
+    QMessageBox m;
+    m.setText("alo");
+    m.exec();
 }
 
 void Spectrograph::resizeEvent(QResizeEvent *e){
@@ -63,6 +79,14 @@ void Spectrograph::loadLevels(double left, double right){
     leftLevel = 5*width()/2*left;
   if(rightLevel < 5*width()/2*right)
     rightLevel = 5*width()/2*right;
+}
+
+void Spectrograph::contextMenuEvent(QContextMenuEvent *e){
+    QMenu menu(this);
+    menu.addAction(changeSpectrumToBars);
+    menu.addAction(changeSpectrumToTay);
+    menu.addAction(changeSpectrumToTob);
+    menu.exec(e->globalPos());
 }
 
 void Spectrograph::paintEvent(QPaintEvent *e){
