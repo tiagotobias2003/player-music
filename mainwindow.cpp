@@ -154,6 +154,7 @@ void MainWindow::goToItem(const QModelIndex &index){
 void MainWindow::loadPlaylist(void){
 }
 
+// carrega arquivos na pl
 void MainWindow::onAddMediaToPlayList(QString media){
   playlist->addMedia(QUrl::fromLocalFile(media));
 }

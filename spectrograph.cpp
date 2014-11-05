@@ -177,11 +177,34 @@ void Spectrograph::drawProf()
     p.setPen(pen);
 }
 
-//Spectrum do Taynara
+//Spectrum de Taynara
 void Spectrograph::drawTay(void){
+    QPainter p(this);
+    QPen pen;
+    float p1x, p1y, p2x;
 
+    p.setRenderHint(QPainter::Antialiasing);
+    p.setBrush(Qt::black);
+    p.drawRect(rect());
+    pen.setStyle(Qt::SolidLine);
+    pen.setColor(Qt::green);
+    pen.setWidth(1);
+    p.setPen(pen);
+    for(int i=0; i<NUM_BANDS;i++){
+      p1x = i*barWidth;
+      p2x = p1x+barWidth;
+      p1y = spectrum[i]/2;
+      p.setBrush(gradientBrush);
+      p.drawRect(QRectF(QPointF(p1x,widgetHeight/2),QPointF(p2x,p1y+widgetHeight/2)));
+    }
+    for(int i=0; i<NUM_BANDS;i++){
+      p1x = i*barWidth;
+      p2x = p1x+barWidth;
+      p1y = widgetHeight/2-spectrum[i]/2;
+      p.setBrush(gradientBrush);
+      p.drawRect(QRectF(QPointF(p1x,p1y),QPointF(p2x,widgetHeight/2)));
+    }
 }
-
 //Spectrum do Tobias
 void Spectrograph::drawTob(void){
 

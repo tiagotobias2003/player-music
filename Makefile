@@ -999,6 +999,10 @@ moc_spectrograph.cpp: abstractspectrograph.h \
 		/usr/include/qt5/QtCore/qtimer.h \
 		/usr/include/qt5/QtCore/qbasictimer.h \
 		/usr/include/qt5/QtGui/QGradient \
+		/usr/include/qt5/QtWidgets/QAction \
+		/usr/include/qt5/QtWidgets/qaction.h \
+		/usr/include/qt5/QtGui/qicon.h \
+		/usr/include/qt5/QtWidgets/qactiongroup.h \
 		spectrograph.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) $(INCPATH) -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include spectrograph.h -o moc_spectrograph.cpp
 
@@ -1888,6 +1892,10 @@ ui_mainwindow.h: mainwindow.ui \
 		/usr/include/qt5/QtCore/qtimer.h \
 		/usr/include/qt5/QtCore/qbasictimer.h \
 		/usr/include/qt5/QtGui/QGradient \
+		/usr/include/qt5/QtWidgets/QAction \
+		/usr/include/qt5/QtWidgets/qaction.h \
+		/usr/include/qt5/QtGui/qicon.h \
+		/usr/include/qt5/QtWidgets/qactiongroup.h \
 		abstractcontrol.h \
 		/usr/include/qt5/QtWidgets/QWidget \
 		/usr/include/qt5/QtWidgets/qwidget.h \
@@ -3244,12 +3252,21 @@ spectrograph.o: spectrograph.cpp spectrograph.h \
 		/usr/include/qt5/QtCore/qtimer.h \
 		/usr/include/qt5/QtCore/qbasictimer.h \
 		/usr/include/qt5/QtGui/QGradient \
+		/usr/include/qt5/QtWidgets/QAction \
+		/usr/include/qt5/QtWidgets/qaction.h \
+		/usr/include/qt5/QtGui/qicon.h \
+		/usr/include/qt5/QtWidgets/qactiongroup.h \
 		/usr/include/qt5/QtCore/qmath.h \
 		/usr/include/qt5/QtGui/QResizeEvent \
 		/usr/include/qt5/QtCore/QTimerEvent \
 		/usr/include/qt5/QtGui/QPainterPath \
 		/usr/include/qt5/QtCore/QEasingCurve \
-		/usr/include/qt5/QtCore/qeasingcurve.h
+		/usr/include/qt5/QtCore/qeasingcurve.h \
+		/usr/include/qt5/QtWidgets/QMessageBox \
+		/usr/include/qt5/QtWidgets/qmessagebox.h \
+		/usr/include/qt5/QtWidgets/qdialog.h \
+		/usr/include/qt5/QtWidgets/QMenu \
+		/usr/include/qt5/QtWidgets/qmenu.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o spectrograph.o spectrograph.cpp
 
 fft.o: fft.cpp fft.h
