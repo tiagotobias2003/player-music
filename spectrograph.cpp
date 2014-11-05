@@ -118,8 +118,38 @@ void Spectrograph::paintEvent(QPaintEvent *e){
     }
 }
 
-//Spectrum do professor
+//Spectrum do editado
 void Spectrograph::drawBars(void){
+    QPainter p(this);
+    QPen pen;
+    float p1x, p1y, p2x;
+
+    p.setRenderHint(QPainter::Antialiasing);
+    p.setBrush(Qt::black);
+    p.drawRect(rect());
+    pen.setStyle(Qt::SolidLine);
+    pen.setColor(Qt::black);
+    pen.setWidth(1);
+    p.setPen(pen);
+    for(int i=0; i<NUM_BANDS;i++){
+      p1x = i*barWidth;
+      p2x = p1x+barWidth;
+      p1y = widgetHeight-spectrum[i];
+      p.setBrush(gradientBrush);
+      p.drawRect(QRectF(QPointF(p1x,p1y),QPointF(p2x,widgetHeight)));
+    }
+    p.setBrush(Qt::black);
+    p.drawRect(0,height()-7,width(),7);
+    p.setBrush(Qt::red);
+    p.drawRoundedRect(width()/2-leftLevel,height()-6,leftLevel,6,3,3);
+    p.setBrush(Qt::blue);
+    p.drawRoundedRect(width()/2,height()-6,rightLevel,6,3,3);
+    p.setPen(pen);
+}
+
+//Spectrum do professor
+void Spectrograph::drawProf()
+{
     QPainter p(this);
     QPen pen;
     float p1x, p1y, p2x;

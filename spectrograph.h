@@ -82,6 +82,7 @@ private:
   QAction *changeSpectrumToTay;
   QAction *changeSpectrumToTob;
   void drawBars();
+  void drawProf();
   void drawTay();
   void drawTob();
 };
