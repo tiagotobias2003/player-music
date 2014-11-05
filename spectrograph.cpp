@@ -37,19 +37,30 @@ Spectrograph::Spectrograph(QWidget *parent) :
   decayBrush.setStyle(Qt::SolidPattern);
   barWidth = MIN_BARWIDTH;
   barSpacing = 1;
-    drawMode = 0;
+
+  //Selecionar tipo do spectrum a ser desenhado
+  drawMode = 1;
   changeSpectrumToBars = new QAction(QString("Bars"),this);
-  connect(changeSpectrumToBars,SIGNAL(triggered()),this,SLOT(mostraMensagem()));
+  connect(changeSpectrumToBars,SIGNAL(triggered()),this,SLOT(changeSpectrograph1()));
   changeSpectrumToTay = new QAction(QString("Tay"),this);
-  connect(changeSpectrumToTay,SIGNAL(triggered()),this,SLOT(mostraMensagem()));
+  connect(changeSpectrumToTay,SIGNAL(triggered()),this,SLOT(changeSpectrograph2()));
   changeSpectrumToTob = new QAction(QString("Tob"),this);
-  connect(changeSpectrumToTob,SIGNAL(triggered()),this,SLOT(mostraMensagem()));
+  connect(changeSpectrumToTob,SIGNAL(triggered()),this,SLOT(changeSpectrograph3()));
 }
 
-void Spectrograph::mostraMensagem(void){
-    QMessageBox m;
-    m.setText("alo");
-    m.exec();
+//Seleciona o tipo 1 barras
+void Spectrograph::changeSpectrograph1(){
+    drawMode = 1;
+    /*QMessageBox m;
+    QString text = "Spectrograph select = " + QString::number(drawMode);
+    m.setText(text);
+    m.exec();*/
+}
+void Spectrograph::changeSpectrograph2(){
+    drawMode = 2;
+}
+void Spectrograph::changeSpectrograph3(){
+    drawMode = 3;
 }
 
 void Spectrograph::resizeEvent(QResizeEvent *e){
@@ -91,31 +102,59 @@ void Spectrograph::contextMenuEvent(QContextMenuEvent *e){
 
 void Spectrograph::paintEvent(QPaintEvent *e){
   Q_UNUSED(e);
-  QPainter p(this);
-  QPen pen;
-  float p1x, p1y, p2x;
-
-  p.setRenderHint(QPainter::Antialiasing);
-  p.setBrush(Qt::black);
-  p.drawRect(rect());
-  pen.setStyle(Qt::SolidLine);
-  pen.setColor(Qt::black);
-  pen.setWidth(1);
-  p.setPen(pen);
-  for(int i=0; i<NUM_BANDS;i++){
-    p1x = i*barWidth;
-    p2x = p1x+barWidth;
-    p1y = widgetHeight-spectrum[i];
-    p.setBrush(gradientBrush);
-    p.drawRect(QRectF(QPointF(p1x,p1y),QPointF(p2x,widgetHeight)));
+    switch (drawMode) {
+    case 1:
+        drawBars();
+        break;
+    case 2:
+        drawTay();
+        break;
+    case 3:
+        drawTob();
+        break;
+    default:
+        drawBars();
+        break;
     }
-  p.setBrush(Qt::black);
-  p.drawRect(0,height()-7,width(),7);
-  p.setBrush(Qt::red);
-  p.drawRoundedRect(width()/2-leftLevel,height()-6,leftLevel,6,3,3);
-  p.setBrush(Qt::blue);
-  p.drawRoundedRect(width()/2,height()-6,rightLevel,6,3,3);
-  p.setPen(pen);
+}
+
+//Spectrum do professor
+void Spectrograph::drawBars(void){
+    QPainter p(this);
+    QPen pen;
+    float p1x, p1y, p2x;
+
+    p.setRenderHint(QPainter::Antialiasing);
+    p.setBrush(Qt::black);
+    p.drawRect(rect());
+    pen.setStyle(Qt::SolidLine);
+    pen.setColor(Qt::black);
+    pen.setWidth(1);
+    p.setPen(pen);
+    for(int i=0; i<NUM_BANDS;i++){
+      p1x = i*barWidth;
+      p2x = p1x+barWidth;
+      p1y = widgetHeight-spectrum[i];
+      p.setBrush(gradientBrush);
+      p.drawRect(QRectF(QPointF(p1x,p1y),QPointF(p2x,widgetHeight)));
+    }
+    p.setBrush(Qt::black);
+    p.drawRect(0,height()-7,width(),7);
+    p.setBrush(Qt::red);
+    p.drawRoundedRect(width()/2-leftLevel,height()-6,leftLevel,6,3,3);
+    p.setBrush(Qt::blue);
+    p.drawRoundedRect(width()/2,height()-6,rightLevel,6,3,3);
+    p.setPen(pen);
+}
+
+//Spectrum do Taynara
+void Spectrograph::drawTay(void){
+
+}
+
+//Spectrum do Tobias
+void Spectrograph::drawTob(void){
+
 }
 
 void Spectrograph::timerEvent(QTimerEvent *e){

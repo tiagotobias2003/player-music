@@ -20,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Spectrograph_t {
-    QByteArrayData data[18];
-    char stringdata[203];
+    QByteArrayData data[20];
+    char stringdata[248];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -47,14 +47,17 @@ QT_MOC_LITERAL(13, 140, 4),
 QT_MOC_LITERAL(14, 145, 5),
 QT_MOC_LITERAL(15, 151, 16),
 QT_MOC_LITERAL(16, 168, 18),
-QT_MOC_LITERAL(17, 187, 14)
+QT_MOC_LITERAL(17, 187, 19),
+QT_MOC_LITERAL(18, 207, 19),
+QT_MOC_LITERAL(19, 227, 19)
     },
     "Spectrograph\0paintEvent\0\0QPaintEvent*\0"
     "e\0loadSamples\0QVector<double>&\0_spectrum\0"
     "timerEvent\0QTimerEvent*\0resizeEvent\0"
     "QResizeEvent*\0loadLevels\0left\0right\0"
     "contextMenuEvent\0QContextMenuEvent*\0"
-    "mostraMensagem\0"
+    "changeSpectrograph1\0changeSpectrograph2\0"
+    "changeSpectrograph3\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -64,7 +67,7 @@ static const uint qt_meta_data_Spectrograph[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -72,13 +75,15 @@ static const uint qt_meta_data_Spectrograph[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   49,    2, 0x0a,
-       5,    1,   52,    2, 0x0a,
-       8,    1,   55,    2, 0x0a,
-      10,    1,   58,    2, 0x0a,
-      12,    2,   61,    2, 0x0a,
-      15,    1,   66,    2, 0x0a,
-      17,    0,   69,    2, 0x09,
+       1,    1,   59,    2, 0x0a,
+       5,    1,   62,    2, 0x0a,
+       8,    1,   65,    2, 0x0a,
+      10,    1,   68,    2, 0x0a,
+      12,    2,   71,    2, 0x0a,
+      15,    1,   76,    2, 0x0a,
+      17,    0,   79,    2, 0x0a,
+      18,    0,   80,    2, 0x0a,
+      19,    0,   81,    2, 0x0a,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
@@ -87,6 +92,8 @@ static const uint qt_meta_data_Spectrograph[] = {
     QMetaType::Void, 0x80000000 | 11,    4,
     QMetaType::Void, QMetaType::Double, QMetaType::Double,   13,   14,
     QMetaType::Void, 0x80000000 | 16,    4,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -103,7 +110,9 @@ void Spectrograph::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 3: _t->resizeEvent((*reinterpret_cast< QResizeEvent*(*)>(_a[1]))); break;
         case 4: _t->loadLevels((*reinterpret_cast< double(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2]))); break;
         case 5: _t->contextMenuEvent((*reinterpret_cast< QContextMenuEvent*(*)>(_a[1]))); break;
-        case 6: _t->mostraMensagem(); break;
+        case 6: _t->changeSpectrograph1(); break;
+        case 7: _t->changeSpectrograph2(); break;
+        case 8: _t->changeSpectrograph3(); break;
         default: ;
         }
     }
@@ -134,13 +143,13 @@ int Spectrograph::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 9)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 7;
+        _id -= 9;
     }
     return _id;
 }

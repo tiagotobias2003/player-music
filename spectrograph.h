@@ -20,6 +20,10 @@
 // width of the bar to be displayed
 #define MIN_BARWIDTH 30
 
+#define INT1 1
+#define INT2 2
+#define INT3 3
+
 // spectrograph class is used to display fourier spectrum
 // bars
 class Spectrograph : public AbstractSpectrograph{
@@ -48,8 +52,12 @@ public slots:
    */
   void loadLevels(double left, double right);
   void contextMenuEvent(QContextMenuEvent *e);
+  void changeSpectrograph1();
+  void changeSpectrograph2();
+  void changeSpectrograph3();
+protected:
 protected slots:
-  void mostraMensagem();
+
 private:
   /*! \var QVector<int> spectrum
    * \brief used to store spectrum to be displayed
@@ -73,6 +81,9 @@ private:
   QAction *changeSpectrumToBars;
   QAction *changeSpectrumToTay;
   QAction *changeSpectrumToTob;
+  void drawBars();
+  void drawTay();
+  void drawTob();
 };
 
 #endif // SPECTROGRAM_H
