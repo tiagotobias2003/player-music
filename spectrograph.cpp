@@ -118,7 +118,7 @@ void Spectrograph::paintEvent(QPaintEvent *e){
     }
 }
 
-//Spectrum do editado
+//Spectrum do editado1
 void Spectrograph::drawBars(void){
     QPainter p(this);
     QPen pen;
