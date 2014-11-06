@@ -18,7 +18,7 @@
 #define BAND_MAX 128
 
 // width of the bar to be displayed
-#define MIN_BARWIDTH 30
+#define MIN_BARWIDTH 15
 
 #define INT1 1
 #define INT2 2

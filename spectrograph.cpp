@@ -16,7 +16,7 @@
 Spectrograph::Spectrograph(QWidget *parent) :
   AbstractSpectrograph(parent){
   startTimer(15);
-  NUM_BANDS = 32;
+  NUM_BANDS = 16;
   spectrum.resize(NUM_BANDS);
   delay.resize(NUM_BANDS);
   for(int i=0; i<NUM_BANDS; i++){
@@ -129,7 +129,7 @@ void Spectrograph::drawBars(void){
     p.drawRect(rect());
     pen.setStyle(Qt::SolidLine);
     pen.setColor(Qt::black);
-    pen.setWidth(1);
+    pen.setWidth(2);
     p.setPen(pen);
     for(int i=0; i<NUM_BANDS;i++){
       p1x = i*barWidth;
