@@ -35,7 +35,8 @@ Spectrograph::Spectrograph(QWidget *parent) :
   pen.setColor(qRgb(0,0,0));
   decayBrush.setColor(QColor(255,0,0,255));
   decayBrush.setStyle(Qt::SolidPattern);
-  barWidth = MIN_BARWIDTH;
+  //barWidth = MIN_BARWIDTH;
+  barWidth = 1;
   barSpacing = 1;
 
   //Selecionar tipo do spectrum a ser desenhado
