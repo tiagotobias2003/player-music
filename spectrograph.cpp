@@ -215,19 +215,64 @@ void Spectrograph::drawTob(void){
     p.setBrush(Qt::black);
     p.drawRect(rect());
     pen.setStyle(Qt::SolidLine);
+    pen.setColor(QColor(250,59,150,250));
+    pen.setWidth(1);
+    p.setPen(pen);
+    p.setBrush(Qt::black);
+    for(int i=0; i<NUM_BANDS;i++){
+        p1x = i*barWidth;
+        p2x = barWidth;
+        p1y = widgetHeight-spectrum[i];
+        p.setBrush(gradientBrush);
+        p.drawArc(p1x,p1y,p2x,widgetHeight/8,i,5*360);
+        p.drawArc(p1x,p1y,p1x+p2x,widgetHeight,i,10*360);
+    }
+}
+/*  igual o do professor só que não
+void Spectrograph::nome(void){
+    QPainter p(this);
+    QPen pen;
+    float p1x, p1y, p2x;
+
+    p.setRenderHint(QPainter::Antialiasing);
+    p.setBrush(Qt::black);
+    p.drawRect(rect());
+    pen.setStyle(Qt::SolidLine);
+    pen.setColor(Qt::red);
+    pen.setWidth(2);
+    p.setPen(pen);
+    for(int i=0; i<NUM_BANDS;i++){
+      p1x = i*barWidth;
+      p2x = p1x+barWidth;
+      p1y = widgetHeight-spectrum[i];
+      p.setBrush(gradientBrush);
+      p.drawRect(QRectF(QPointF(p1x,p1y),QPointF(p2x,widgetHeight/10)));
+    }
+}
+*/
+
+/* doideira
+void Spectrograph::nome2(void){
+    QPainter p(this);
+    QPen pen;
+    float p1x, p2x, p1y;
+    p.setRenderHint(QPainter::Antialiasing);
+    p.setBrush(Qt::black);
+    p.drawRect(rect());
+    pen.setStyle(Qt::SolidLine);
     pen.setColor(Qt::green);
     pen.setWidth(1);
     p.setPen(pen);
     p.setBrush(Qt::black);
     for(int i=0; i<NUM_BANDS;i++){
         p1x = i*barWidth;
-        p2x = p1x+barWidth;
+        p2x = barWidth;
         p1y = widgetHeight-spectrum[i];
         p.setBrush(gradientBrush);
-        //p.drawRect(QRectF(QPointF(p1x,p1y),QPointF(p2x,widgetHeight)));
         p.drawArc(p1x,p1y,p1x+p2x,widgetHeight,i,10*360);
     }
 }
+*/
 
 void Spectrograph::timerEvent(QTimerEvent *e){
   Q_UNUSED(e);
