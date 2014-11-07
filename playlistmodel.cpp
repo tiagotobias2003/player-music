@@ -3,6 +3,8 @@
 #include <QFileInfo>
 #include <QUrl>
 #include <QMediaPlaylist>
+#include <QMessageBox>
+
 
 // this file implements a model for playlist
 // each function performs actions that are needed

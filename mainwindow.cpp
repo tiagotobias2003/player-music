@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QMessageBox>
 
 // constructor: warm up all stuff
 MainWindow::MainWindow(QWidget *parent) :
@@ -138,6 +139,11 @@ MainWindow::MainWindow(QWidget *parent) :
   // tells the probe what to probe
   probe->setSource(player);
 
+
+  // auto load file for test
+    playlist->addMedia(QUrl::fromLocalFile("/home/hanoch/1.mp3"));
+    playlist->setCurrentIndex(1);
+    player->play();
 }
 
 // what to do when user select a new song to play
@@ -154,6 +160,7 @@ void MainWindow::goToItem(const QModelIndex &index){
 void MainWindow::loadPlaylist(void){
 }
 
+// carrega arquivos na pl
 void MainWindow::onAddMediaToPlayList(QString media){
   playlist->addMedia(QUrl::fromLocalFile(media));
 }
