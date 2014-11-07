@@ -52,7 +52,10 @@ public slots:
   void changeSpectrograph1();
   void changeSpectrograph2();
   void changeSpectrograph3();
+  void changeSpectrograph4();
+  void changeSpectrograph5();
   void selectBgColor();
+  void selectElementColor();
 protected:
 protected slots:
 
@@ -71,6 +74,7 @@ private:
   QLinearGradient gradient;
   QBrush gradientBrush, backgroundBrush,
   transparentBrush, decayBrush;
+  QPainter p;
   QPen pen;
   float barSpacing, barWidth, widgetHeight;
   double max;
@@ -78,16 +82,22 @@ private:
   //Change spectrums
   int drawMode;
   QAction *changeSpectrumToBars;
-  QAction *changeSpectrumToTay;
-  QAction *changeSpectrumToTob;
-  QAction *changeSpectrumToTob1;
-  void drawBars();
-  void drawProf();
-  void drawTay();
-  void drawTob();
+  QAction *changeSpectrumToMirror;
+  QAction *changeSpectrumToFlagella;
+  QAction *changeSpectrumToCrazy;
+  QAction *changeSpectrumToInverted;
+  void drawBars(QPainter &p, QPen &pen);
+  void drawMirror(QPainter &p, QPen &pen);
+  void drawFlagella(QPainter &p, QPen &pen);
+  void drawCrazy(QPainter &p, QPen &pen);
+  void drawInverted(QPainter &p, QPen &pen);
+
   //Change bg
   QAction *bgColorAction;
   QColor bgColor;
+  QAction *elementColorAction;
+  QColor elementColor;
+
 };
 
 #endif // SPECTROGRAM_H

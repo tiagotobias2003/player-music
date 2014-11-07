@@ -33,7 +33,8 @@ Spectrograph::Spectrograph(QWidget *parent) :
   backgroundBrush.setColor(Qt::white);
   backgroundBrush.setStyle(Qt::SolidPattern);
   transparentBrush.setColor(Qt::transparent);
-  pen.setColor(qRgb(0,0,0));
+  elementColor = Qt::white;
+  pen.setColor(elementColor);
   decayBrush.setColor(QColor(255,0,0,255));
   decayBrush.setStyle(Qt::SolidPattern);
   //barWidth = MIN_BARWIDTH;
@@ -41,23 +42,40 @@ Spectrograph::Spectrograph(QWidget *parent) :
   barSpacing = 1;
 
   //Selecionar tipo do spectrum a ser desenhado
-  drawMode = 1;
+  drawMode = 2;
+  bgColor = Qt::white;
   changeSpectrumToBars = new QAction(QString("Bars"),this);
   connect(changeSpectrumToBars,SIGNAL(triggered()),this,SLOT(changeSpectrograph1()));
-  changeSpectrumToTay = new QAction(QString("Tay"),this);
-  connect(changeSpectrumToTay,SIGNAL(triggered()),this,SLOT(changeSpectrograph2()));
-  changeSpectrumToTob = new QAction(QString("Tob"),this);
-  connect(changeSpectrumToTob,SIGNAL(triggered()),this,SLOT(changeSpectrograph3()));
-  bgColorAction = new QAction(QString("Background Color"),this);
+  changeSpectrumToMirror = new QAction(QString("Mirror"),this);
+  connect(changeSpectrumToMirror,SIGNAL(triggered()),this,SLOT(changeSpectrograph2()));
+  changeSpectrumToFlagella = new QAction(QString("Flagella"),this);
+  connect(changeSpectrumToFlagella,SIGNAL(triggered()),this,SLOT(changeSpectrograph3()));
+  changeSpectrumToCrazy = new QAction(QString("Crazy"),this);
+  connect(changeSpectrumToCrazy,SIGNAL(triggered()),this,SLOT(changeSpectrograph4()));
+  changeSpectrumToInverted = new QAction(QString("Inverted"),this);
+  connect(changeSpectrumToInverted,SIGNAL(triggered()),this,SLOT(changeSpectrograph5()));
+
+  bgColorAction = new QAction(QString("Background"),this);
   connect(bgColorAction,SIGNAL(triggered()),this,SLOT(selectBgColor()));
+  elementColorAction = new QAction(QString("Element"),this);
+  connect(elementColorAction,SIGNAL(triggered()),this,SLOT(selectElementColor()));
+
 }
 
 void Spectrograph::contextMenuEvent(QContextMenuEvent *e){
     QMenu menu(this);
-    menu.addAction(changeSpectrumToBars);
-    menu.addAction(changeSpectrumToTay);
-    menu.addAction(changeSpectrumToTob);
-    menu.addAction(bgColorAction);
+
+    QMenu *spectrums = menu.addMenu("Spectrums");
+    spectrums->addAction(changeSpectrumToBars);
+    spectrums->addAction(changeSpectrumToMirror);
+    spectrums->addAction(changeSpectrumToFlagella);
+    spectrums->addAction(changeSpectrumToInverted);
+    spectrums->addAction(changeSpectrumToCrazy);
+
+    QMenu *colors = menu.addMenu("Colors");
+    colors->addAction(bgColorAction);
+    colors->addAction(elementColorAction);
+
     menu.exec(e->globalPos());
 }
 
@@ -74,6 +92,12 @@ void Spectrograph::changeSpectrograph2(){
 }
 void Spectrograph::changeSpectrograph3(){
     drawMode = 3;
+}
+void Spectrograph::changeSpectrograph4(){
+    drawMode = 4;
+}
+void Spectrograph::changeSpectrograph5(){
+    drawMode = 5;
 }
 
 void Spectrograph::resizeEvent(QResizeEvent *e){
@@ -106,35 +130,43 @@ void Spectrograph::loadLevels(double left, double right){
 }
 
 void Spectrograph::paintEvent(QPaintEvent *e){
-  Q_UNUSED(e);
+    Q_UNUSED(e);
+    QPainter p(this);
+    QPen pen;
+
+    p.setRenderHint(QPainter::Antialiasing);
+    p.setBrush(bgColor);
+    p.drawRect(rect());
+    pen.setStyle(Qt::SolidLine);
+    pen.setColor(elementColor);
+
     switch (drawMode) {
     case 1:
-        drawBars();
+        drawBars(p, pen);
         break;
     case 2:
-        drawTay();
+        drawMirror(p, pen);
         break;
     case 3:
-        drawTob();
+        drawFlagella(p, pen);
+        break;
+    case 4:
+        drawCrazy(p, pen);
+        break;
+    case 5:
+        drawInverted(p, pen);
         break;
     default:
-        drawBars();
+        drawMirror(p, pen);
         break;
     }
 }
 
 //Spectrum do editado1
-void Spectrograph::drawBars(void){
-    QPainter p(this);
-    QPen pen;
+void Spectrograph::drawBars(QPainter &p, QPen &pen){
     float p1x, p1y, p2x;
-
-    p.setRenderHint(QPainter::Antialiasing);
-    p.setBrush(Qt::black);
-    p.drawRect(rect());
-    pen.setStyle(Qt::SolidLine);
-    pen.setColor(Qt::black);
     pen.setWidth(2);
+    pen.setColor(elementColor);
     p.setPen(pen);
     for(int i=0; i<NUM_BANDS;i++){
       p1x = i*barWidth;
@@ -152,7 +184,82 @@ void Spectrograph::drawBars(void){
     p.setPen(pen);
 }
 
-//Spectrum do professor
+
+//Spectrum de Taynara
+void Spectrograph::drawMirror(QPainter &p, QPen &pen){
+    float p1x, p1y, p2x;
+    pen.setColor(elementColor);
+    pen.setWidth(1);
+    p.setPen(pen);
+    for(int i=0; i<NUM_BANDS;i++){
+      p1x = i*barWidth;
+      p2x = p1x+barWidth;
+      p1y = spectrum[i]/2;
+      p.setBrush(gradientBrush);
+      p.drawRect(QRectF(QPointF(p1x,widgetHeight/2),QPointF(p2x,p1y+widgetHeight/2)));
+    }
+    for(int i=0; i<NUM_BANDS;i++){
+      p1x = i*barWidth;
+      p2x = p1x+barWidth;
+      p1y = widgetHeight/2-spectrum[i]/2;
+      p.setBrush(gradientBrush);
+      p.drawRect(QRectF(QPointF(p1x,p1y),QPointF(p2x,widgetHeight/2)));
+    }
+}
+//Spectrum do Tobias
+void Spectrograph::drawFlagella(QPainter &p, QPen &pen){
+    float p1x, p2x, p1y;
+    pen.setWidth(1);
+    p.setPen(pen);
+    if(elementColor == bgColor){
+        int red = 255 - bgColor.toRgb().red();
+        int green = 255 - bgColor.toRgb().green();
+        int blue = 255 - bgColor.toRgb().blue();
+        elementColor = qRgb(red, green, blue);
+    }
+    for(int i=0; i<NUM_BANDS;i++){
+        p1x = i*barWidth;
+        p2x = barWidth;
+        p1y = widgetHeight-spectrum[i];
+        p.setBrush(gradientBrush);
+        p.drawArc(p1x,p1y,p2x,widgetHeight,i,10*360);
+    }
+}
+//Spectrum Crazy
+void Spectrograph::drawCrazy(QPainter &p, QPen &pen){
+    float p1x, p2x, p1y;
+    pen.setWidth(1);
+    p.setPen(pen);
+    if(elementColor == bgColor){
+        int red = 255 - bgColor.toRgb().red();
+        int green = 255 - bgColor.toRgb().green();
+        int blue = 255 - bgColor.toRgb().blue();
+        elementColor = qRgb(red, green, blue);
+    }
+    for(int i=0; i<NUM_BANDS;i++){
+        p1x = i*barWidth;
+        p2x = barWidth;
+        p1y = widgetHeight-spectrum[i];
+        p.setBrush(gradientBrush);
+        p.drawArc(p1x,p1y,p1x+p2x,widgetHeight,i,10*360);
+    }
+}
+//Spectrum Inverted
+void Spectrograph::drawInverted(QPainter &p, QPen &pen){
+    float p1x, p1y, p2x;
+    pen.setColor(elementColor);
+    pen.setWidth(2);
+    p.setPen(pen);
+    for(int i=0; i<NUM_BANDS;i++){
+      p1x = i*barWidth;
+      p2x = p1x+barWidth;
+      p1y = widgetHeight-spectrum[i];
+      p.setBrush(gradientBrush);
+      p.drawRect(QRectF(QPointF(p1x,p1y),QPointF(p2x,widgetHeight/10)));
+    }
+}
+
+/*Spectrum do professor
 void Spectrograph::drawProf()
 {
     QPainter p(this);
@@ -180,58 +287,7 @@ void Spectrograph::drawProf()
     p.setBrush(Qt::blue);
     p.drawRoundedRect(width()/2,height()-6,rightLevel,6,3,3);
     p.setPen(pen);
-}
-
-//Spectrum de Taynara
-void Spectrograph::drawTay(void){
-    QPainter p(this);
-    QPen pen;
-    float p1x, p1y, p2x;
-
-    p.setRenderHint(QPainter::Antialiasing);
-    p.setBrush(Qt::black);
-    p.drawRect(rect());
-    pen.setStyle(Qt::SolidLine);
-    pen.setColor(Qt::green);
-    pen.setWidth(1);
-    p.setPen(pen);
-    for(int i=0; i<NUM_BANDS;i++){
-      p1x = i*barWidth;
-      p2x = p1x+barWidth;
-      p1y = spectrum[i]/2;
-      p.setBrush(gradientBrush);
-      p.drawRect(QRectF(QPointF(p1x,widgetHeight/2),QPointF(p2x,p1y+widgetHeight/2)));
-    }
-    for(int i=0; i<NUM_BANDS;i++){
-      p1x = i*barWidth;
-      p2x = p1x+barWidth;
-      p1y = widgetHeight/2-spectrum[i]/2;
-      p.setBrush(gradientBrush);
-      p.drawRect(QRectF(QPointF(p1x,p1y),QPointF(p2x,widgetHeight/2)));
-    }
-}
-//Spectrum do Tobias
-void Spectrograph::drawTob(void){
-    QPainter p(this);
-    QPen pen;
-    float p1x, p2x, p1y;
-    p.setRenderHint(QPainter::Antialiasing);
-    p.setBrush(Qt::black);
-    p.drawRect(rect());
-    pen.setStyle(Qt::SolidLine);
-    pen.setColor(Qt::green);
-    pen.setWidth(1);
-    p.setPen(pen);
-    p.setBrush(Qt::black);
-    for(int i=0; i<NUM_BANDS;i++){
-        p1x = i*barWidth;
-        p2x = p1x+barWidth;
-        p1y = widgetHeight-spectrum[i];
-        p.setBrush(gradientBrush);
-        //p.drawRect(QRectF(QPointF(p1x,p1y),QPointF(p2x,widgetHeight)));
-        p.drawArc(p1x,p1y,p1x+p2x,widgetHeight,i,10*360);
-    }
-}
+}*/
 
 void Spectrograph::timerEvent(QTimerEvent *e){
   Q_UNUSED(e);
@@ -268,4 +324,12 @@ void Spectrograph::selectBgColor(void){
         bgColor = b.selectedColor();
     }
      backgroundBrush.setColor(bgColor);
-   }
+}
+
+void Spectrograph::selectElementColor(void){
+    QColorDialog b;
+    if(b.exec()){
+        elementColor = b.selectedColor();
+    }
+    pen.setColor(elementColor);
+}
