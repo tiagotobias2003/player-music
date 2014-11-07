@@ -224,8 +224,7 @@ void Spectrograph::drawTob(void){
         p2x = barWidth;
         p1y = widgetHeight-spectrum[i];
         p.setBrush(gradientBrush);
-        p.drawArc(p1x,p1y,p2x,widgetHeight/8,i,5*360);
-        p.drawArc(p1x,p1y,p1x+p2x,widgetHeight,i,10*360);
+        p.drawArc(p1x,p1y,p2x,widgetHeight,i,10*360);
     }
 }
 /*  igual o do professor só que não
