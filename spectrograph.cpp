@@ -12,6 +12,7 @@
 #include <QAction>
 #include <QMessageBox>
 #include <QMenu>
+#include <QColorDialog>
 
 Spectrograph::Spectrograph(QWidget *parent) :
   AbstractSpectrograph(parent){
@@ -47,6 +48,17 @@ Spectrograph::Spectrograph(QWidget *parent) :
   connect(changeSpectrumToTay,SIGNAL(triggered()),this,SLOT(changeSpectrograph2()));
   changeSpectrumToTob = new QAction(QString("Tob"),this);
   connect(changeSpectrumToTob,SIGNAL(triggered()),this,SLOT(changeSpectrograph3()));
+  bgColorAction = new QAction(QString("Background Color"),this);
+  connect(bgColorAction,SIGNAL(triggered()),this,SLOT(selectBgColor()));
+}
+
+void Spectrograph::contextMenuEvent(QContextMenuEvent *e){
+    QMenu menu(this);
+    menu.addAction(changeSpectrumToBars);
+    menu.addAction(changeSpectrumToTay);
+    menu.addAction(changeSpectrumToTob);
+    menu.addAction(bgColorAction);
+    menu.exec(e->globalPos());
 }
 
 //Seleciona o tipo 1 barras
@@ -91,14 +103,6 @@ void Spectrograph::loadLevels(double left, double right){
     leftLevel = 5*width()/2*left;
   if(rightLevel < 5*width()/2*right)
     rightLevel = 5*width()/2*right;
-}
-
-void Spectrograph::contextMenuEvent(QContextMenuEvent *e){
-    QMenu menu(this);
-    menu.addAction(changeSpectrumToBars);
-    menu.addAction(changeSpectrumToTay);
-    menu.addAction(changeSpectrumToTob);
-    menu.exec(e->globalPos());
 }
 
 void Spectrograph::paintEvent(QPaintEvent *e){
@@ -239,3 +243,11 @@ void Spectrograph::loadSamples(QVector<double> &_spectrum){
   }
   repaint();
 }
+
+void Spectrograph::selectBgColor(void){
+    QColorDialog b;
+    if(b.exec()){
+        bgColor = b.selectedColor();
+    }
+     backgroundBrush.setColor(bgColor);
+   }

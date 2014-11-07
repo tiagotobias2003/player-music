@@ -13,16 +13,13 @@
 #include <QTimer>
 #include <QGradient>
 #include <QAction>
+#include <QColor>
 
 // the maximum number of bands
 #define BAND_MAX 128
 
 // width of the bar to be displayed
 #define MIN_BARWIDTH 15
-
-#define INT1 1
-#define INT2 2
-#define INT3 3
 
 // spectrograph class is used to display fourier spectrum
 // bars
@@ -55,6 +52,7 @@ public slots:
   void changeSpectrograph1();
   void changeSpectrograph2();
   void changeSpectrograph3();
+  void selectBgColor();
 protected:
 protected slots:
 
@@ -77,14 +75,19 @@ private:
   float barSpacing, barWidth, widgetHeight;
   double max;
   double time;
+  //Change spectrums
   int drawMode;
   QAction *changeSpectrumToBars;
   QAction *changeSpectrumToTay;
   QAction *changeSpectrumToTob;
+  QAction *changeSpectrumToTob1;
   void drawBars();
   void drawProf();
   void drawTay();
   void drawTob();
+  //Change bg
+  QAction *bgColorAction;
+  QColor bgColor;
 };
 
 #endif // SPECTROGRAM_H
