@@ -211,6 +211,7 @@ void Spectrograph::drawFlagella(QPainter &p, QPen &pen){
     float p1x, p2x, p1y;
     pen.setWidth(1);
     p.setPen(pen);
+    //Tenta evitar que a linha fique da mesma cor do fundo
     if(elementColor == bgColor){
         int red = 255 - bgColor.toRgb().red();
         int green = 255 - bgColor.toRgb().green();
@@ -230,6 +231,7 @@ void Spectrograph::drawCrazy(QPainter &p, QPen &pen){
     float p1x, p2x, p1y;
     pen.setWidth(1);
     p.setPen(pen);
+    //Tenta evitar que a linha fique da mesma cor do fundo
     if(elementColor == bgColor){
         int red = 255 - bgColor.toRgb().red();
         int green = 255 - bgColor.toRgb().green();
