@@ -166,7 +166,7 @@ void Spectrograph::paintEvent(QPaintEvent *e){
 void Spectrograph::drawBars(QPainter &p, QPen &pen){
     float p1x, p1y, p2x;
     pen.setWidth(2);
-    pen.setColor(elementColor);
+    pen.setColor(bgColor);
     p.setPen(pen);
     for(int i=0; i<NUM_BANDS;i++){
       p1x = i*barWidth;
@@ -188,7 +188,7 @@ void Spectrograph::drawBars(QPainter &p, QPen &pen){
 //Spectrum de Taynara
 void Spectrograph::drawMirror(QPainter &p, QPen &pen){
     float p1x, p1y, p2x;
-    pen.setColor(elementColor);
+    pen.setColor(bgColor);
     pen.setWidth(1);
     p.setPen(pen);
     for(int i=0; i<NUM_BANDS;i++){
@@ -249,7 +249,7 @@ void Spectrograph::drawCrazy(QPainter &p, QPen &pen){
 //Spectrum Inverted
 void Spectrograph::drawInverted(QPainter &p, QPen &pen){
     float p1x, p1y, p2x;
-    pen.setColor(elementColor);
+    pen.setColor(bgColor);
     pen.setWidth(2);
     p.setPen(pen);
     for(int i=0; i<NUM_BANDS;i++){
