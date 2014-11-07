@@ -208,7 +208,25 @@ void Spectrograph::drawTay(void){
 }
 //Spectrum do Tobias
 void Spectrograph::drawTob(void){
-
+    QPainter p(this);
+    QPen pen;
+    float p1x, p2x, p1y;
+    p.setRenderHint(QPainter::Antialiasing);
+    p.setBrush(Qt::black);
+    p.drawRect(rect());
+    pen.setStyle(Qt::SolidLine);
+    pen.setColor(Qt::green);
+    pen.setWidth(1);
+    p.setPen(pen);
+    p.setBrush(Qt::black);
+    for(int i=0; i<NUM_BANDS;i++){
+        p1x = i*barWidth;
+        p2x = p1x+barWidth;
+        p1y = widgetHeight-spectrum[i];
+        p.setBrush(gradientBrush);
+        //p.drawRect(QRectF(QPointF(p1x,p1y),QPointF(p2x,widgetHeight)));
+        p.drawArc(p1x,p1y,p1x+p2x,widgetHeight,i,10*360);
+    }
 }
 
 void Spectrograph::timerEvent(QTimerEvent *e){

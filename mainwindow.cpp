@@ -141,7 +141,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
   // auto load file for test
-    playlist->addMedia(QUrl::fromLocalFile("/home/hanoch/1.mp3"));
+    playlist->addMedia(QUrl::fromLocalFile("/home/lumpy/test.mp3"));
     playlist->setCurrentIndex(1);
     player->play();
 }
