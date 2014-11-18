@@ -30,7 +30,7 @@ Spectrograph::Spectrograph(QWidget *parent) :
   gradient.setColorAt(0, Qt::black);
   gradientBrush = QBrush(gradient);
   gradientBrush.setStyle(Qt::SolidPattern);
-  backgroundBrush.setColor(Qt::white);
+  backgroundBrush.setColor(Qt::black);
   backgroundBrush.setStyle(Qt::SolidPattern);
   transparentBrush.setColor(Qt::transparent);
   elementColor = Qt::white;
@@ -43,7 +43,7 @@ Spectrograph::Spectrograph(QWidget *parent) :
 
   //Selecionar tipo do spectrum a ser desenhado
   drawMode = 2;
-  bgColor = Qt::white;
+  bgColor = Qt::black;
   changeSpectrumToBars = new QAction(QString("Bars"),this);
   connect(changeSpectrumToBars,SIGNAL(triggered()),this,SLOT(changeSpectrograph1()));
   changeSpectrumToMirror = new QAction(QString("Mirror"),this);
