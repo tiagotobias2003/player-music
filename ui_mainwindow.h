@@ -72,7 +72,8 @@ public:
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         listViewPlaylist = new QListView(centralWidget);
         listViewPlaylist->setObjectName(QStringLiteral("listViewPlaylist"));
-        listViewPlaylist->setStyleSheet(QStringLiteral(""));
+        listViewPlaylist->setStyleSheet(QStringLiteral("QWidget{color:rgb(206, 206, 206);}"));
+        listViewPlaylist->setUniformItemSizes(false);
 
         horizontalLayout->addWidget(listViewPlaylist);
 

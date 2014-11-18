@@ -1,6 +1,8 @@
 <RCC>
-    <qresource prefix="/"/>
-    <qresource prefix="/img">
-        <file>resources/test.svg</file>
+    <qresource prefix="/">
+        <file>resources/next.png</file>
+        <file>resources/pause.png</file>
+        <file>resources/play.png</file>
+        <file>resources/prev.png</file>
     </qresource>
 </RCC>

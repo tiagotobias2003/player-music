@@ -111,7 +111,7 @@ public:
         pushButtonPlayPause->setObjectName(QStringLiteral("pushButtonPlayPause"));
         sizePolicy.setHeightForWidth(pushButtonPlayPause->sizePolicy().hasHeightForWidth());
         pushButtonPlayPause->setSizePolicy(sizePolicy);
-        pushButtonPlayPause->setStyleSheet(QStringLiteral("QWidget{background-color:white;}"));
+        pushButtonPlayPause->setStyleSheet(QStringLiteral(""));
         QIcon icon1;
         icon1.addFile(QStringLiteral(":/resources/play.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButtonPlayPause->setIcon(icon1);

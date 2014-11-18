@@ -111,7 +111,7 @@
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">QWidget{background-color:white;}</string>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string/>
