@@ -395,7 +395,8 @@ check: first
 compiler_rcc_make_all: qrc_resources.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) qrc_resources.cpp
-qrc_resources.cpp: resources.qrc
+qrc_resources.cpp: resources.qrc \
+		resources/test.svg
 	/usr/lib/x86_64-linux-gnu/qt5/bin/rcc -name resources resources.qrc -o qrc_resources.cpp
 
 compiler_moc_header_make_all: moc_mainwindow.cpp moc_spectrograph.cpp moc_controls.cpp moc_fftcalc.cpp moc_mediainfo.cpp moc_abstractcontrol.cpp moc_abstractspectrograph.cpp moc_abstractmediainfo.cpp moc_playlistmodel.cpp
@@ -1003,6 +1004,7 @@ moc_spectrograph.cpp: abstractspectrograph.h \
 		/usr/include/qt5/QtWidgets/qaction.h \
 		/usr/include/qt5/QtGui/qicon.h \
 		/usr/include/qt5/QtWidgets/qactiongroup.h \
+		/usr/include/qt5/QtGui/QColor \
 		spectrograph.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) $(INCPATH) -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include spectrograph.h -o moc_spectrograph.cpp
 
@@ -1896,6 +1898,7 @@ ui_mainwindow.h: mainwindow.ui \
 		/usr/include/qt5/QtWidgets/qaction.h \
 		/usr/include/qt5/QtGui/qicon.h \
 		/usr/include/qt5/QtWidgets/qactiongroup.h \
+		/usr/include/qt5/QtGui/QColor \
 		abstractcontrol.h \
 		/usr/include/qt5/QtWidgets/QWidget \
 		/usr/include/qt5/QtWidgets/qwidget.h \
@@ -3121,7 +3124,8 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/usr/include/qt5/QtGui/QPainter \
 		/usr/include/qt5/QtGui/QPen \
 		/usr/include/qt5/QtGui/QBrush \
-		/usr/include/qt5/QtGui/QGradient
+		/usr/include/qt5/QtGui/QGradient \
+		/usr/include/qt5/QtGui/QColor
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 spectrograph.o: spectrograph.cpp spectrograph.h \
@@ -3256,6 +3260,7 @@ spectrograph.o: spectrograph.cpp spectrograph.h \
 		/usr/include/qt5/QtWidgets/qaction.h \
 		/usr/include/qt5/QtGui/qicon.h \
 		/usr/include/qt5/QtWidgets/qactiongroup.h \
+		/usr/include/qt5/QtGui/QColor \
 		/usr/include/qt5/QtCore/qmath.h \
 		/usr/include/qt5/QtGui/QResizeEvent \
 		/usr/include/qt5/QtCore/QTimerEvent \
@@ -3266,7 +3271,9 @@ spectrograph.o: spectrograph.cpp spectrograph.h \
 		/usr/include/qt5/QtWidgets/qmessagebox.h \
 		/usr/include/qt5/QtWidgets/qdialog.h \
 		/usr/include/qt5/QtWidgets/QMenu \
-		/usr/include/qt5/QtWidgets/qmenu.h
+		/usr/include/qt5/QtWidgets/qmenu.h \
+		/usr/include/qt5/QtWidgets/QColorDialog \
+		/usr/include/qt5/QtWidgets/qcolordialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o spectrograph.o spectrograph.cpp
 
 fft.o: fft.cpp fft.h

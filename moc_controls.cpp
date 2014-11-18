@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Controls_t {
-    QByteArrayData data[16];
-    char stringdata[188];
+    QByteArrayData data[18];
+    char stringdata[215];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -44,14 +44,16 @@ QT_MOC_LITERAL(11, 113, 15),
 QT_MOC_LITERAL(12, 129, 5),
 QT_MOC_LITERAL(13, 135, 16),
 QT_MOC_LITERAL(14, 152, 17),
-QT_MOC_LITERAL(15, 170, 16)
+QT_MOC_LITERAL(15, 170, 20),
+QT_MOC_LITERAL(16, 191, 5),
+QT_MOC_LITERAL(17, 197, 16)
     },
     "Controls\0playPause\0\0next\0prev\0stop\0"
     "volumeSelected\0elapsedSelected\0"
     "onPlayPauseClicked\0onPrevClicked\0"
     "onNextClicked\0onVolumeChanged\0value\0"
     "onElapsedChanged\0onDurationChanged\0"
-    "onSliderReleased\0"
+    "onPlayerStateChanged\0state\0onSliderReleased\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -61,7 +63,7 @@ static const uint qt_meta_data_Controls[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      13,   14, // methods
+      14,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -69,21 +71,22 @@ static const uint qt_meta_data_Controls[] = {
        6,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   79,    2, 0x06,
-       3,    0,   80,    2, 0x06,
-       4,    0,   81,    2, 0x06,
-       5,    0,   82,    2, 0x06,
-       6,    1,   83,    2, 0x06,
-       7,    1,   86,    2, 0x06,
+       1,    0,   84,    2, 0x06,
+       3,    0,   85,    2, 0x06,
+       4,    0,   86,    2, 0x06,
+       5,    0,   87,    2, 0x06,
+       6,    1,   88,    2, 0x06,
+       7,    1,   91,    2, 0x06,
 
  // slots: name, argc, parameters, tag, flags
-       8,    0,   89,    2, 0x0a,
-       9,    0,   90,    2, 0x0a,
-      10,    0,   91,    2, 0x0a,
-      11,    1,   92,    2, 0x0a,
-      13,    1,   95,    2, 0x0a,
-      14,    1,   98,    2, 0x0a,
-      15,    0,  101,    2, 0x09,
+       8,    0,   94,    2, 0x0a,
+       9,    0,   95,    2, 0x0a,
+      10,    0,   96,    2, 0x0a,
+      11,    1,   97,    2, 0x0a,
+      13,    1,  100,    2, 0x0a,
+      14,    1,  103,    2, 0x0a,
+      15,    1,  106,    2, 0x0a,
+      17,    0,  109,    2, 0x09,
 
  // signals: parameters
     QMetaType::Void,
@@ -100,6 +103,7 @@ static const uint qt_meta_data_Controls[] = {
     QMetaType::Void, QMetaType::Int,   12,
     QMetaType::Void, QMetaType::LongLong,   12,
     QMetaType::Void, QMetaType::LongLong,   12,
+    QMetaType::Void, QMetaType::Bool,   16,
     QMetaType::Void,
 
        0        // eod
@@ -122,7 +126,8 @@ void Controls::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 9: _t->onVolumeChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 10: _t->onElapsedChanged((*reinterpret_cast< qint64(*)>(_a[1]))); break;
         case 11: _t->onDurationChanged((*reinterpret_cast< qint64(*)>(_a[1]))); break;
-        case 12: _t->onSliderReleased(); break;
+        case 12: _t->onPlayerStateChanged((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 13: _t->onSliderReleased(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -192,13 +197,13 @@ int Controls::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 13)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 13;
+        _id -= 14;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 13)
+        if (_id < 14)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 13;
+        _id -= 14;
     }
     return _id;
 }

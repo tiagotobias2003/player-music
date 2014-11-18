@@ -13,11 +13,10 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QDial>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLCDNumber>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QVBoxLayout>
@@ -28,44 +27,114 @@ QT_BEGIN_NAMESPACE
 class Ui_Controls
 {
 public:
+    QHBoxLayout *horizontalLayout_5;
     QVBoxLayout *verticalLayout;
-    QHBoxLayout *horizontalLayout_4;
-    QDial *dialVolume;
-    QSlider *horizontalSliderPosition;
     QHBoxLayout *horizontalLayout_2;
     QLCDNumber *lcdNumberElapsed;
-    QLabel *label;
+    QFrame *line;
     QLCDNumber *lcdNumberDuration;
+    QSlider *dialVolume;
     QHBoxLayout *horizontalLayout_3;
     QHBoxLayout *horizontalLayout;
-    QPushButton *pushButtonPlayPause;
     QPushButton *pushButtonPrev;
+    QPushButton *pushButtonPlayPause;
     QPushButton *pushButtonNext;
+    QSlider *horizontalSliderPosition;
 
     void setupUi(QWidget *Controls)
     {
         if (Controls->objectName().isEmpty())
             Controls->setObjectName(QStringLiteral("Controls"));
-        Controls->resize(976, 157);
+        Controls->resize(216, 186);
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(Controls->sizePolicy().hasHeightForWidth());
         Controls->setSizePolicy(sizePolicy);
-        verticalLayout = new QVBoxLayout(Controls);
+        Controls->setStyleSheet(QStringLiteral("QWidget{background-color:black;}"));
+        horizontalLayout_5 = new QHBoxLayout(Controls);
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        dialVolume = new QDial(Controls);
-        dialVolume->setObjectName(QStringLiteral("dialVolume"));
-        dialVolume->setEnabled(true);
-        sizePolicy.setHeightForWidth(dialVolume->sizePolicy().hasHeightForWidth());
-        dialVolume->setSizePolicy(sizePolicy);
-        dialVolume->setMinimumSize(QSize(30, 30));
-        dialVolume->setWrapping(false);
-        dialVolume->setNotchesVisible(true);
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        lcdNumberElapsed = new QLCDNumber(Controls);
+        lcdNumberElapsed->setObjectName(QStringLiteral("lcdNumberElapsed"));
+        lcdNumberElapsed->setFrameShape(QFrame::StyledPanel);
+        lcdNumberElapsed->setFrameShadow(QFrame::Plain);
+        lcdNumberElapsed->setSegmentStyle(QLCDNumber::Flat);
 
-        horizontalLayout_4->addWidget(dialVolume);
+        horizontalLayout_2->addWidget(lcdNumberElapsed);
+
+        line = new QFrame(Controls);
+        line->setObjectName(QStringLiteral("line"));
+        line->setFrameShape(QFrame::VLine);
+        line->setFrameShadow(QFrame::Sunken);
+
+        horizontalLayout_2->addWidget(line);
+
+        lcdNumberDuration = new QLCDNumber(Controls);
+        lcdNumberDuration->setObjectName(QStringLiteral("lcdNumberDuration"));
+        lcdNumberDuration->setFrameShape(QFrame::StyledPanel);
+        lcdNumberDuration->setFrameShadow(QFrame::Plain);
+        lcdNumberDuration->setSegmentStyle(QLCDNumber::Flat);
+
+        horizontalLayout_2->addWidget(lcdNumberDuration);
+
+        dialVolume = new QSlider(Controls);
+        dialVolume->setObjectName(QStringLiteral("dialVolume"));
+        dialVolume->setSliderPosition(99);
+        dialVolume->setOrientation(Qt::Vertical);
+
+        horizontalLayout_2->addWidget(dialVolume);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
+
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setSizeConstraint(QLayout::SetMinimumSize);
+        pushButtonPrev = new QPushButton(Controls);
+        pushButtonPrev->setObjectName(QStringLiteral("pushButtonPrev"));
+        sizePolicy.setHeightForWidth(pushButtonPrev->sizePolicy().hasHeightForWidth());
+        pushButtonPrev->setSizePolicy(sizePolicy);
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/resources/prev.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButtonPrev->setIcon(icon);
+        pushButtonPrev->setIconSize(QSize(40, 40));
+
+        horizontalLayout->addWidget(pushButtonPrev);
+
+        pushButtonPlayPause = new QPushButton(Controls);
+        pushButtonPlayPause->setObjectName(QStringLiteral("pushButtonPlayPause"));
+        sizePolicy.setHeightForWidth(pushButtonPlayPause->sizePolicy().hasHeightForWidth());
+        pushButtonPlayPause->setSizePolicy(sizePolicy);
+        pushButtonPlayPause->setStyleSheet(QStringLiteral("QWidget{background-color:white;}"));
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/resources/play.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButtonPlayPause->setIcon(icon1);
+        pushButtonPlayPause->setIconSize(QSize(40, 40));
+
+        horizontalLayout->addWidget(pushButtonPlayPause);
+
+        pushButtonNext = new QPushButton(Controls);
+        pushButtonNext->setObjectName(QStringLiteral("pushButtonNext"));
+        sizePolicy.setHeightForWidth(pushButtonNext->sizePolicy().hasHeightForWidth());
+        pushButtonNext->setSizePolicy(sizePolicy);
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/resources/next.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButtonNext->setIcon(icon2);
+        pushButtonNext->setIconSize(QSize(40, 40));
+
+        horizontalLayout->addWidget(pushButtonNext);
+
+
+        horizontalLayout_3->addLayout(horizontalLayout);
+
+
+        verticalLayout->addLayout(horizontalLayout_3);
 
         horizontalSliderPosition = new QSlider(Controls);
         horizontalSliderPosition->setObjectName(QStringLiteral("horizontalSliderPosition"));
@@ -92,85 +161,17 @@ public:
 " }"));
         horizontalSliderPosition->setOrientation(Qt::Horizontal);
 
-        horizontalLayout_4->addWidget(horizontalSliderPosition);
-
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        lcdNumberElapsed = new QLCDNumber(Controls);
-        lcdNumberElapsed->setObjectName(QStringLiteral("lcdNumberElapsed"));
-        lcdNumberElapsed->setFrameShape(QFrame::StyledPanel);
-        lcdNumberElapsed->setFrameShadow(QFrame::Plain);
-        lcdNumberElapsed->setSegmentStyle(QLCDNumber::Flat);
-
-        horizontalLayout_2->addWidget(lcdNumberElapsed);
-
-        label = new QLabel(Controls);
-        label->setObjectName(QStringLiteral("label"));
-        QFont font;
-        font.setPointSize(16);
-        font.setBold(true);
-        font.setWeight(75);
-        label->setFont(font);
-
-        horizontalLayout_2->addWidget(label);
-
-        lcdNumberDuration = new QLCDNumber(Controls);
-        lcdNumberDuration->setObjectName(QStringLiteral("lcdNumberDuration"));
-        lcdNumberDuration->setFrameShape(QFrame::StyledPanel);
-        lcdNumberDuration->setFrameShadow(QFrame::Plain);
-        lcdNumberDuration->setSegmentStyle(QLCDNumber::Flat);
-
-        horizontalLayout_2->addWidget(lcdNumberDuration);
+        verticalLayout->addWidget(horizontalSliderPosition);
 
 
-        horizontalLayout_4->addLayout(horizontalLayout_2);
+        horizontalLayout_5->addLayout(verticalLayout);
 
-
-        verticalLayout->addLayout(horizontalLayout_4);
-
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        horizontalLayout->setSizeConstraint(QLayout::SetMinimumSize);
-        pushButtonPlayPause = new QPushButton(Controls);
-        pushButtonPlayPause->setObjectName(QStringLiteral("pushButtonPlayPause"));
-        sizePolicy.setHeightForWidth(pushButtonPlayPause->sizePolicy().hasHeightForWidth());
-        pushButtonPlayPause->setSizePolicy(sizePolicy);
-        pushButtonPlayPause->setIconSize(QSize(30, 30));
-
-        horizontalLayout->addWidget(pushButtonPlayPause);
-
-        pushButtonPrev = new QPushButton(Controls);
-        pushButtonPrev->setObjectName(QStringLiteral("pushButtonPrev"));
-        sizePolicy.setHeightForWidth(pushButtonPrev->sizePolicy().hasHeightForWidth());
-        pushButtonPrev->setSizePolicy(sizePolicy);
-        pushButtonPrev->setIconSize(QSize(30, 30));
-
-        horizontalLayout->addWidget(pushButtonPrev);
-
-        pushButtonNext = new QPushButton(Controls);
-        pushButtonNext->setObjectName(QStringLiteral("pushButtonNext"));
-        sizePolicy.setHeightForWidth(pushButtonNext->sizePolicy().hasHeightForWidth());
-        pushButtonNext->setSizePolicy(sizePolicy);
-        pushButtonNext->setIconSize(QSize(30, 30));
-
-        horizontalLayout->addWidget(pushButtonNext);
-
-
-        horizontalLayout_3->addLayout(horizontalLayout);
-
-
-        verticalLayout->addLayout(horizontalLayout_3);
-
-        verticalLayout->setStretch(0, 50);
-        verticalLayout->setStretch(1, 50);
 
         retranslateUi(Controls);
-        QObject::connect(dialVolume, SIGNAL(valueChanged(int)), Controls, SLOT(onVolumeChanged(int)));
         QObject::connect(pushButtonNext, SIGNAL(clicked()), Controls, SLOT(onNextClicked()));
         QObject::connect(pushButtonPrev, SIGNAL(clicked()), Controls, SLOT(onPrevClicked()));
         QObject::connect(pushButtonPlayPause, SIGNAL(clicked()), Controls, SLOT(onPlayPauseClicked()));
+        QObject::connect(dialVolume, SIGNAL(valueChanged(int)), Controls, SLOT(onVolumeChanged(int)));
 
         QMetaObject::connectSlotsByName(Controls);
     } // setupUi
@@ -178,10 +179,9 @@ public:
     void retranslateUi(QWidget *Controls)
     {
         Controls->setWindowTitle(QApplication::translate("Controls", "Form", 0));
-        label->setText(QApplication::translate("Controls", ":", 0));
-        pushButtonPlayPause->setText(QApplication::translate("Controls", "play/pause", 0));
-        pushButtonPrev->setText(QApplication::translate("Controls", "prev", 0));
-        pushButtonNext->setText(QApplication::translate("Controls", "next", 0));
+        pushButtonPrev->setText(QString());
+        pushButtonPlayPause->setText(QString());
+        pushButtonNext->setText(QString());
     } // retranslateUi
 
 };

@@ -28,9 +28,9 @@ void MediaInfo::setAtribute(QString property, QString value){
     bitrate = value;
   if(property == "AudioCodec")
     codec = value;
-  text = artist+"/"+title+"/"+
-      album+"/"+track+"/"+
-      bitrate+"/"+codec;
+  text = artist+"\n"+title+"\n"+
+      album+"\n"+track+"\n"+
+      bitrate+"\n"+codec;
 
   // just display the text into the label :P
   ui->label->setText(text);

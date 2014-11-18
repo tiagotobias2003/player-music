@@ -42,7 +42,9 @@ class MainWindow : public QMainWindow{
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    bool fag;
 
+    int state();
 public slots:
   //
   // see description on mainwindow.h
@@ -62,6 +64,8 @@ public slots:
     void setVolume(int volume);
     void spectrumAvailable(QVector<double> spectrum);
     void metaDataAvailableChanged(bool);
+    void mediaStateChanged(QMediaPlayer::State state);
+
 private:
     // User interface widget
     Ui::MainWindow *ui;
@@ -117,6 +121,9 @@ signals:
 
     // tells there are new directories to be added to the music library
     int addFolderToLibrary(QString folder);
+
+    int playPauseChanged(bool);
+
 
 protected slots:
 };

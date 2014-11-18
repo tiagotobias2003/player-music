@@ -53,7 +53,7 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(598, 468);
-        MainWindow->setStyleSheet(QStringLiteral(""));
+        MainWindow->setStyleSheet(QStringLiteral("QWidget{background-color:black;}"));
         actionLoad = new QAction(MainWindow);
         actionLoad->setObjectName(QStringLiteral("actionLoad"));
         centralWidget = new QWidget(MainWindow);

@@ -3,6 +3,7 @@
 #include "abstractcontrol.h"
 
 #include <QTime>
+#include <QIcon>
 
 namespace Ui {
 class Controls;
@@ -19,6 +20,8 @@ private:
     Ui::Controls *ui;
     qint64 duration;
     int sliderPressed;
+    QIcon play, pause;
+    bool flag;
 public slots:
     void onPlayPauseClicked(void);
     void onPrevClicked(void);
@@ -26,6 +29,7 @@ public slots:
     void onVolumeChanged(int value);
     void onElapsedChanged(qint64 value);
     void onDurationChanged(qint64 value);
+    void onPlayerStateChanged(bool state);
 protected slots:
     void onSliderReleased();
 signals:

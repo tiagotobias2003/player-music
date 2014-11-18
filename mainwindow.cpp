@@ -99,6 +99,9 @@ MainWindow::MainWindow(QWidget *parent) :
   connect(ui->control, SIGNAL(playPause()), this, SLOT(playPause()));
   connect(ui->control, SIGNAL(prev()), this, SLOT(prev()));
   connect(ui->control, SIGNAL(next()), this, SLOT(next()));
+  connect(this, SIGNAL(playPauseChanged(bool)),
+          ui->control,SLOT(onPlayerStateChanged(bool)));
+
 
   // when the music position changes on player, it has to be
   // informed to the control unit to redraw it ui
@@ -135,6 +138,9 @@ MainWindow::MainWindow(QWidget *parent) :
   // emits a calculatedSpectrum signal
   connect(calculator, SIGNAL(calculatedSpectrum(QVector<double>)),
           this, SLOT(spectrumAvailable(QVector<double>)));
+
+  connect(player,SIGNAL(stateChanged(QMediaPlayer::State)),
+          SLOT(mediaStateChanged(QMediaPlayer::State)));
 
   // tells the probe what to probe
   probe->setSource(player);
@@ -378,4 +384,17 @@ void MainWindow::playPause(){
     player->play();
   else
     player->pause();
+}
+
+int MainWindow::state(){
+    return state();
+}
+
+void MainWindow::mediaStateChanged(QMediaPlayer::State state){
+  if(state == QMediaPlayer::PlayingState){
+    emit playPauseChanged(true);
+  }
+  else{
+    emit playPauseChanged(false);
+  }
 }
