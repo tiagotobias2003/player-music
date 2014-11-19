@@ -35,6 +35,7 @@ void Controls::onSliderReleased(){
 
 // the folowing method is self-explained
 void Controls::onPlayPauseClicked(){
+
   emit playPause();
 }
 

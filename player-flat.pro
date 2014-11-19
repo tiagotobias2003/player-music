@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     controls.cpp \
     fftcalc.cpp \
     mediainfo.cpp \
-    playlistmodel.cpp
+    playlistmodel.cpp \
+    music_info.cpp
  
 HEADERS  += mainwindow.h \
     spectrograph.h \
@@ -32,7 +33,8 @@ HEADERS  += mainwindow.h \
     abstractcontrol.h \
     abstractspectrograph.h \
     abstractmediainfo.h \
-    playlistmodel.h
+    playlistmodel.h \
+    music_info.h
    fft.h
 
 FORMS    += mainwindow.ui \

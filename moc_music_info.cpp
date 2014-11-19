@@ -1,17 +1,17 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'mediainfo.h'
+** Meta object code from reading C++ file 'music_info.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "mediainfo.h"
+#include "music_info.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #include <QtCore/QList>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'mediainfo.h' doesn't include <QObject>."
+#error "The header file 'music_info.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.2.1. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -19,42 +19,39 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-struct qt_meta_stringdata_MediaInfo_t {
-    QByteArrayData data[11];
-    char stringdata[111];
+struct qt_meta_stringdata_Music_info_t {
+    QByteArrayData data[8];
+    char stringdata[85];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    offsetof(qt_meta_stringdata_MediaInfo_t, stringdata) + ofs \
+    offsetof(qt_meta_stringdata_Music_info_t, stringdata) + ofs \
         - idx * sizeof(QByteArrayData) \
     )
-static const qt_meta_stringdata_MediaInfo_t qt_meta_stringdata_MediaInfo = {
+static const qt_meta_stringdata_Music_info_t qt_meta_stringdata_Music_info = {
     {
-QT_MOC_LITERAL(0, 0, 9),
-QT_MOC_LITERAL(1, 10, 11),
-QT_MOC_LITERAL(2, 22, 0),
-QT_MOC_LITERAL(3, 23, 8),
-QT_MOC_LITERAL(4, 32, 5),
-QT_MOC_LITERAL(5, 38, 16),
-QT_MOC_LITERAL(6, 55, 14),
-QT_MOC_LITERAL(7, 70, 5),
-QT_MOC_LITERAL(8, 76, 9),
-QT_MOC_LITERAL(9, 86, 16),
-QT_MOC_LITERAL(10, 103, 6)
+QT_MOC_LITERAL(0, 0, 10),
+QT_MOC_LITERAL(1, 11, 16),
+QT_MOC_LITERAL(2, 28, 0),
+QT_MOC_LITERAL(3, 29, 14),
+QT_MOC_LITERAL(4, 44, 5),
+QT_MOC_LITERAL(5, 50, 9),
+QT_MOC_LITERAL(6, 60, 16),
+QT_MOC_LITERAL(7, 77, 6)
     },
-    "MediaInfo\0setAtribute\0\0property\0value\0"
-    "downloadFinished\0QNetworkReply*\0reply\0"
-    "sslErrors\0QList<QSslError>\0errors\0"
+    "Music_info\0downloadFinished\0\0"
+    "QNetworkReply*\0reply\0sslErrors\0"
+    "QList<QSslError>\0errors\0"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_MediaInfo[] = {
+static const uint qt_meta_data_Music_info[] = {
 
  // content:
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -62,39 +59,36 @@ static const uint qt_meta_data_MediaInfo[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    2,   29,    2, 0x0a,
-       5,    1,   34,    2, 0x0a,
-       8,    1,   37,    2, 0x0a,
+       1,    1,   24,    2, 0x0a,
+       5,    1,   27,    2, 0x0a,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,    4,
+    QMetaType::Void, 0x80000000 | 3,    4,
     QMetaType::Void, 0x80000000 | 6,    7,
-    QMetaType::Void, 0x80000000 | 9,   10,
 
        0        // eod
 };
 
-void MediaInfo::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void Music_info::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        MediaInfo *_t = static_cast<MediaInfo *>(_o);
+        Music_info *_t = static_cast<Music_info *>(_o);
         switch (_id) {
-        case 0: _t->setAtribute((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
-        case 1: _t->downloadFinished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
-        case 2: _t->sslErrors((*reinterpret_cast< const QList<QSslError>(*)>(_a[1]))); break;
+        case 0: _t->downloadFinished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 1: _t->sslErrors((*reinterpret_cast< const QList<QSslError>(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<int*>(_a[0]) = -1; break;
-        case 1:
+        case 0:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
                 *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QNetworkReply* >(); break;
             }
             break;
-        case 2:
+        case 1:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
@@ -105,38 +99,38 @@ void MediaInfo::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
     }
 }
 
-const QMetaObject MediaInfo::staticMetaObject = {
-    { &AbstractMediaInfo::staticMetaObject, qt_meta_stringdata_MediaInfo.data,
-      qt_meta_data_MediaInfo,  qt_static_metacall, 0, 0}
+const QMetaObject Music_info::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_Music_info.data,
+      qt_meta_data_Music_info,  qt_static_metacall, 0, 0}
 };
 
 
-const QMetaObject *MediaInfo::metaObject() const
+const QMetaObject *Music_info::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *MediaInfo::qt_metacast(const char *_clname)
+void *Music_info::qt_metacast(const char *_clname)
 {
     if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_MediaInfo.stringdata))
-        return static_cast<void*>(const_cast< MediaInfo*>(this));
-    return AbstractMediaInfo::qt_metacast(_clname);
+    if (!strcmp(_clname, qt_meta_stringdata_Music_info.stringdata))
+        return static_cast<void*>(const_cast< Music_info*>(this));
+    return QObject::qt_metacast(_clname);
 }
 
-int MediaInfo::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int Music_info::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = AbstractMediaInfo::qt_metacall(_c, _id, _a);
+    _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 2;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 2;
     }
     return _id;
 }
