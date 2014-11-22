@@ -1,11 +1,15 @@
 #include "mediainfo.h"
 #include "ui_mediainfo.h"
+#include "mediainfo.h"
 #include <QDebug>
 
 MediaInfo::MediaInfo(QWidget *parent) :
   AbstractMediaInfo(parent),
   ui(new Ui::MediaInfo){
   ui->setupUi(this);
+  connect(&music,SIGNAL(ready()),this,SLOT(allReady()));
+  doDonwload = true;
+  newTitle = false;
 }
 
 MediaInfo::~MediaInfo(){
@@ -18,8 +22,10 @@ void MediaInfo::setAtribute(QString property, QString value){
   QString text;
   if(property == "AlbumArtist")
     artist = value;
-  if(property == "Title")
+  if(property == "Title"){
+    if(value != title) newTitle = true;
     title = value;
+  }
   if(property == "AlbumTitle")
     album = value;
   if(property == "TrackNumber")
@@ -28,10 +34,26 @@ void MediaInfo::setAtribute(QString property, QString value){
     bitrate = value;
   if(property == "AudioCodec")
     codec = value;
-  text = artist+"\n"+title+"\n"+
-      album+"\n"+track+"\n"+
-      bitrate+"\n"+codec;
+
+
+  if(doDonwload && newTitle && artist != NULL)
+  {
+      qDebug() << "passou: "+artist+" - "+title;
+      music.search(artist,title);
+      doDonwload = false;
+  }
+
+    text = "Carregando informacoes...";
 
   // just display the text into the label :P
-  ui->label->setText(text);
+    ui->label->setText(artist+" / "+title+" / "+album+ " / "+track);
+}
+
+void MediaInfo::allReady()
+{
+     QString letra;
+     letra = music.getLetra();
+     ui->label->setText(letra);
+     doDonwload = true;
+     newTitle = false;
 }

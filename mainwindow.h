@@ -54,7 +54,7 @@ public slots:
     void loadPlaylist();
     void onAddMediaToPlayList(QString media);
     void mediaStatusChanged(QMediaPlayer::MediaStatus status);
-    void metaDataChanged();
+    void metaDataChanged(const QString &key, const QVariant &value);
     void next();
     void playPause();
     void slotPositionChanged(qint64 e);

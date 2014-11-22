@@ -39,7 +39,9 @@ void Controls::onSliderReleased(){
   emit elapsedSelected(ui->horizontalSliderPosition->value()*duration/100);
 }
 
-void Controls::onPlayPauseClicked(void){
+
+// the folowing method is self-explained
+void Controls::onPlayPauseClicked(){
   emit playPause();
 }
 
