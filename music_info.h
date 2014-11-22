@@ -30,7 +30,8 @@ public:
 public slots:
     void downloadFinished(QNetworkReply *reply);
     void sslErrors(const QList<QSslError> &errors);
-
+signals:
+    void ready();
 private:
     QString letra;
     void doDownload(const QUrl &url);

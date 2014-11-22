@@ -5,10 +5,6 @@
 #include "iostream"
 
 
-QString letra;
-QDebug deb = qDebug();
-
-
 // constructor
 Music_info::Music_info()
 {
@@ -48,7 +44,6 @@ void Music_info::doDownload(const QUrl &url)
 void Music_info::downloadFinished(QNetworkReply *reply)
 {
     QUrl url = reply->url();
-     deb << reply->readAll();
     //deb << this->letra.toUtf8();
     if (reply->error()) {
         fprintf(stderr, "Download of %s failed: %s\n",
@@ -62,7 +57,10 @@ void Music_info::downloadFinished(QNetworkReply *reply)
     reply->deleteLater();
 
     if (currentDownloads.isEmpty())
-        deb << "todos os downloads finalizados";
+    {
+        letra = reply->readAll();
+        emit ready();
+    }
         // all downloads finished
         //QCoreApplication::instance()->quit();
 }

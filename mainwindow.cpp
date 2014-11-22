@@ -65,9 +65,8 @@ MainWindow::MainWindow(QWidget *parent) :
   // if some metadata changed for media, display it somewhere
   // it seems not work on windows
   // but works for linux :)
-  connect(player,SIGNAL(metaDataChanged()),
-          this, SLOT(metaDataChanged()));
-
+  connect(player,SIGNAL(metaDataChanged(QString,QVariant)),
+          this,SLOT(metaDataChanged(QString,QVariant)));
   // if metadata is available, take care of it
   // it seems not work for linux
   // but works for windows :p
@@ -353,14 +352,20 @@ void MainWindow::metaDataAvailableChanged(bool flag){
 
 // and now the linux one
 // display the song info
-void MainWindow::metaDataChanged(){
+void MainWindow::metaDataChanged(const QString &key, const QVariant &value){
   if(player->isMetaDataAvailable()){
-    ui->widgetInfo->setAtribute("AlbumArtist",player->metaData("AlbumArtist").toString());
-    ui->widgetInfo->setAtribute("Title",player->metaData("Title").toString());
-    ui->widgetInfo->setAtribute("AlbumTitle",player->metaData("AlbumTitle").toString());
-    ui->widgetInfo->setAtribute("TrackNumber",player->metaData("TrackNumber").toString());
-    ui->widgetInfo->setAtribute("AudioBitRate",player->metaData("AudioBitRate").toString());
-    ui->widgetInfo->setAtribute("AudioCodec",player->metaData("AudioCodec").toString());
+      if(key == "AlbumArtist")
+          ui->widgetInfo->setAtribute("AlbumArtist",player->metaData("AlbumArtist").toString());
+      if(key == "Title")
+          ui->widgetInfo->setAtribute("Title",player->metaData("Title").toString());
+      if(key == "AlbumTitle")
+          ui->widgetInfo->setAtribute("AlbumTitle",player->metaData("AlbumTitle").toString());
+      if(key == "TrackNumber")
+          ui->widgetInfo->setAtribute("TrackNumber",player->metaData("TrackNumber").toString());
+      if(key == "AudioBitRate")
+          ui->widgetInfo->setAtribute("AudioBitRate",player->metaData("AudioBitRate").toString());
+      if(key == "AudioCodec")
+          ui->widgetInfo->setAtribute("AudioCodec",player->metaData("AudioCodec").toString());
   }
   // pehraps lots of metadata may be available, only the above are passed ahead
   //  ui->widgetInfo->setAtribute(key,variant.toString());*/

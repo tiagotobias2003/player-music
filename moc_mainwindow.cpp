@@ -20,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[40];
-    char stringdata[462];
+    QByteArrayData data[42];
+    char stringdata[472];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -54,22 +54,24 @@ QT_MOC_LITERAL(20, 213, 18),
 QT_MOC_LITERAL(21, 232, 25),
 QT_MOC_LITERAL(22, 258, 6),
 QT_MOC_LITERAL(23, 265, 15),
-QT_MOC_LITERAL(24, 281, 4),
-QT_MOC_LITERAL(25, 286, 9),
-QT_MOC_LITERAL(26, 296, 19),
-QT_MOC_LITERAL(27, 316, 1),
-QT_MOC_LITERAL(28, 318, 4),
-QT_MOC_LITERAL(29, 323, 13),
-QT_MOC_LITERAL(30, 337, 12),
-QT_MOC_LITERAL(31, 350, 6),
-QT_MOC_LITERAL(32, 357, 10),
-QT_MOC_LITERAL(33, 368, 7),
-QT_MOC_LITERAL(34, 376, 9),
-QT_MOC_LITERAL(35, 386, 6),
-QT_MOC_LITERAL(36, 393, 17),
-QT_MOC_LITERAL(37, 411, 15),
-QT_MOC_LITERAL(38, 427, 8),
-QT_MOC_LITERAL(39, 436, 24)
+QT_MOC_LITERAL(24, 281, 3),
+QT_MOC_LITERAL(25, 285, 5),
+QT_MOC_LITERAL(26, 291, 4),
+QT_MOC_LITERAL(27, 296, 9),
+QT_MOC_LITERAL(28, 306, 19),
+QT_MOC_LITERAL(29, 326, 1),
+QT_MOC_LITERAL(30, 328, 4),
+QT_MOC_LITERAL(31, 333, 13),
+QT_MOC_LITERAL(32, 347, 12),
+QT_MOC_LITERAL(33, 360, 6),
+QT_MOC_LITERAL(34, 367, 10),
+QT_MOC_LITERAL(35, 378, 7),
+QT_MOC_LITERAL(36, 386, 9),
+QT_MOC_LITERAL(37, 396, 6),
+QT_MOC_LITERAL(38, 403, 17),
+QT_MOC_LITERAL(39, 421, 15),
+QT_MOC_LITERAL(40, 437, 8),
+QT_MOC_LITERAL(41, 446, 24)
     },
     "MainWindow\0spectrumChanged\0\0"
     "QVector<double>&\0sample\0positionChanged\0"
@@ -79,12 +81,12 @@ QT_MOC_LITERAL(39, 436, 24)
     "index\0loadMedia\0loadPlaylist\0"
     "onAddMediaToPlayList\0media\0"
     "mediaStatusChanged\0QMediaPlayer::MediaStatus\0"
-    "status\0metaDataChanged\0next\0playPause\0"
-    "slotPositionChanged\0e\0prev\0processBuffer\0"
-    "QAudioBuffer\0buffer\0setMediaAt\0percent\0"
-    "setVolume\0volume\0spectrumAvailable\0"
-    "QVector<double>\0spectrum\0"
-    "metaDataAvailableChanged\0"
+    "status\0metaDataChanged\0key\0value\0next\0"
+    "playPause\0slotPositionChanged\0e\0prev\0"
+    "processBuffer\0QAudioBuffer\0buffer\0"
+    "setMediaAt\0percent\0setVolume\0volume\0"
+    "spectrumAvailable\0QVector<double>\0"
+    "spectrum\0metaDataAvailableChanged\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -114,16 +116,16 @@ static const uint qt_meta_data_MainWindow[] = {
       17,    0,  135,    2, 0x0a,
       18,    1,  136,    2, 0x0a,
       20,    1,  139,    2, 0x0a,
-      23,    0,  142,    2, 0x0a,
-      24,    0,  143,    2, 0x0a,
-      25,    0,  144,    2, 0x0a,
-      26,    1,  145,    2, 0x0a,
-      28,    0,  148,    2, 0x0a,
-      29,    1,  149,    2, 0x0a,
-      32,    1,  152,    2, 0x0a,
-      34,    1,  155,    2, 0x0a,
-      36,    1,  158,    2, 0x0a,
-      39,    1,  161,    2, 0x0a,
+      23,    2,  142,    2, 0x0a,
+      26,    0,  147,    2, 0x0a,
+      27,    0,  148,    2, 0x0a,
+      28,    1,  149,    2, 0x0a,
+      30,    0,  152,    2, 0x0a,
+      31,    1,  153,    2, 0x0a,
+      34,    1,  156,    2, 0x0a,
+      36,    1,  159,    2, 0x0a,
+      38,    1,  162,    2, 0x0a,
+      41,    1,  165,    2, 0x0a,
 
  // signals: parameters
     QMetaType::Int, 0x80000000 | 3,    4,
@@ -138,15 +140,15 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,   19,
     QMetaType::Void, 0x80000000 | 21,   22,
+    QMetaType::Void, QMetaType::QString, QMetaType::QVariant,   24,   25,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::LongLong,   29,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::LongLong,   27,
-    QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 30,   31,
-    QMetaType::Void, QMetaType::Int,   33,
+    QMetaType::Void, 0x80000000 | 32,   33,
     QMetaType::Void, QMetaType::Int,   35,
-    QMetaType::Void, 0x80000000 | 37,   38,
+    QMetaType::Void, QMetaType::Int,   37,
+    QMetaType::Void, 0x80000000 | 39,   40,
     QMetaType::Void, QMetaType::Bool,    2,
 
        0        // eod
@@ -172,7 +174,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 7: _t->loadPlaylist(); break;
         case 8: _t->onAddMediaToPlayList((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 9: _t->mediaStatusChanged((*reinterpret_cast< QMediaPlayer::MediaStatus(*)>(_a[1]))); break;
-        case 10: _t->metaDataChanged(); break;
+        case 10: _t->metaDataChanged((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QVariant(*)>(_a[2]))); break;
         case 11: _t->next(); break;
         case 12: _t->playPause(); break;
         case 13: _t->slotPositionChanged((*reinterpret_cast< qint64(*)>(_a[1]))); break;
