@@ -7,7 +7,7 @@
 class AbstractMediaInfo : public QWidget{
   Q_OBJECT
 public:
-  explicit AbstractMediaInfo(QWidget *parent = 0){Q_UNUSED(parent);}
+    explicit AbstractMediaInfo(QWidget *parent = 0):QWidget(parent){}
 
 public slots:
   // set attributes to be displayed

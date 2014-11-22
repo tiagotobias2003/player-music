@@ -2,6 +2,9 @@
 #include "ui_controls.h"
 #include <QMouseEvent>
 #include <QDebug>
+#include <QPushButton>
+#include <QIcon>
+#include <QMediaPlayer>
 
 // controls constructor
 // starts up all stuff
@@ -19,6 +22,9 @@ Controls::Controls(QWidget *parent):
   // duration records total music time to be played
   duration=1;
   ui->horizontalSliderPosition->setDisabled(true);
+  play = QIcon(":/resources/play.png");
+  pause = QIcon(":/resources/pause.png");
+  flag = true;
 }
 
 // put the trash on the trash
@@ -33,9 +39,9 @@ void Controls::onSliderReleased(){
   emit elapsedSelected(ui->horizontalSliderPosition->value()*duration/100);
 }
 
+
 // the folowing method is self-explained
 void Controls::onPlayPauseClicked(){
-
   emit playPause();
 }
 
@@ -81,5 +87,15 @@ void Controls::onElapsedChanged(qint64 value){
     // position slider in the new elapsed time
     ui->horizontalSliderPosition->setValue(100*value/duration);
   }
+}
+
+void Controls::onPlayerStateChanged(bool state){
+  if(state == true){
+    ui->pushButtonPlayPause->setIcon(pause);
+  }
+  else{
+    ui->pushButtonPlayPause->setIcon(play);
+  }
+
 }
 

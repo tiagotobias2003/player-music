@@ -35,6 +35,7 @@ public:
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         label = new QLabel(MediaInfo);
         label->setObjectName(QStringLiteral("label"));
+        label->setStyleSheet(QStringLiteral("QWidget{color:white;}"));
 
         horizontalLayout->addWidget(label);
 

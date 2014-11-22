@@ -53,7 +53,7 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(598, 468);
-        MainWindow->setStyleSheet(QStringLiteral(""));
+        MainWindow->setStyleSheet(QStringLiteral("QWidget{background-color:black;}"));
         actionLoad = new QAction(MainWindow);
         actionLoad->setObjectName(QStringLiteral("actionLoad"));
         centralWidget = new QWidget(MainWindow);
@@ -72,7 +72,8 @@ public:
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         listViewPlaylist = new QListView(centralWidget);
         listViewPlaylist->setObjectName(QStringLiteral("listViewPlaylist"));
-        listViewPlaylist->setStyleSheet(QStringLiteral(""));
+        listViewPlaylist->setStyleSheet(QStringLiteral("QWidget{color:rgb(206, 206, 206);}"));
+        listViewPlaylist->setUniformItemSizes(false);
 
         horizontalLayout->addWidget(listViewPlaylist);
 

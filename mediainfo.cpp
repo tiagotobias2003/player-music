@@ -51,8 +51,9 @@ void MediaInfo::setAtribute(QString property, QString value){
 
 void MediaInfo::allReady()
 {
-    qDebug() << "alo";
-     ui->label->setText(music.getLetra());
+     QString letra;
+     letra = music.getLetra();
+     ui->label->setText(letra);
      doDonwload = true;
      newTitle = false;
 }

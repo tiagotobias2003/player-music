@@ -11,6 +11,12 @@
 #include <QStringList>
 #include <QTimer>
 #include <QUrl>
+#include "QDebug"
+#include "iostream"
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QStringList>
 
 #include <stdio.h>
 
@@ -34,6 +40,8 @@ signals:
     void ready();
 private:
     QString letra;
+    QStringList propertyNames;
+    QStringList propertyKeys;
     void doDownload(const QUrl &url);
 };
 

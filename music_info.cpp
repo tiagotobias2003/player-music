@@ -1,8 +1,6 @@
 #include <QCoreApplication>
-
 #include "music_info.h"
-#include "QDebug"
-#include "iostream"
+#include <QDebug>
 
 
 // constructor
@@ -58,7 +56,15 @@ void Music_info::downloadFinished(QNetworkReply *reply)
 
     if (currentDownloads.isEmpty())
     {
-        letra = reply->readAll();
+        letra = (QString)reply->readAll();
+
+        QJsonDocument document = QJsonDocument::fromJson(letra.toUtf8());
+        // The document wrap a jsonObject
+        QJsonObject jsonObj = document.object();
+        QVariantMap tudo = jsonObj.toVariantMap();
+        QVariant result = tudo["mus"];
+        qDebug() << result;
+      //qDebug() << letra;
         emit ready();
     }
         // all downloads finished
@@ -74,5 +80,6 @@ void Music_info::sslErrors(const QList<QSslError> &sslErrors)
     Q_UNUSED(sslErrors);
 #endif
 }
+
 
 

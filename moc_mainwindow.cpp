@@ -20,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[42];
-    char stringdata[472];
+    QByteArrayData data[46];
+    char stringdata[533];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -44,41 +44,45 @@ QT_MOC_LITERAL(10, 95, 18),
 QT_MOC_LITERAL(11, 114, 7),
 QT_MOC_LITERAL(12, 122, 18),
 QT_MOC_LITERAL(13, 141, 6),
-QT_MOC_LITERAL(14, 148, 8),
-QT_MOC_LITERAL(15, 157, 5),
-QT_MOC_LITERAL(16, 163, 9),
-QT_MOC_LITERAL(17, 173, 12),
-QT_MOC_LITERAL(18, 186, 20),
-QT_MOC_LITERAL(19, 207, 5),
-QT_MOC_LITERAL(20, 213, 18),
-QT_MOC_LITERAL(21, 232, 25),
-QT_MOC_LITERAL(22, 258, 6),
-QT_MOC_LITERAL(23, 265, 15),
-QT_MOC_LITERAL(24, 281, 3),
-QT_MOC_LITERAL(25, 285, 5),
-QT_MOC_LITERAL(26, 291, 4),
-QT_MOC_LITERAL(27, 296, 9),
-QT_MOC_LITERAL(28, 306, 19),
-QT_MOC_LITERAL(29, 326, 1),
-QT_MOC_LITERAL(30, 328, 4),
-QT_MOC_LITERAL(31, 333, 13),
-QT_MOC_LITERAL(32, 347, 12),
-QT_MOC_LITERAL(33, 360, 6),
-QT_MOC_LITERAL(34, 367, 10),
-QT_MOC_LITERAL(35, 378, 7),
-QT_MOC_LITERAL(36, 386, 9),
-QT_MOC_LITERAL(37, 396, 6),
-QT_MOC_LITERAL(38, 403, 17),
-QT_MOC_LITERAL(39, 421, 15),
-QT_MOC_LITERAL(40, 437, 8),
-QT_MOC_LITERAL(41, 446, 24)
+QT_MOC_LITERAL(14, 148, 16),
+QT_MOC_LITERAL(15, 165, 8),
+QT_MOC_LITERAL(16, 174, 5),
+QT_MOC_LITERAL(17, 180, 9),
+QT_MOC_LITERAL(18, 190, 12),
+QT_MOC_LITERAL(19, 203, 20),
+QT_MOC_LITERAL(20, 224, 5),
+QT_MOC_LITERAL(21, 230, 18),
+QT_MOC_LITERAL(22, 249, 25),
+QT_MOC_LITERAL(23, 275, 6),
+QT_MOC_LITERAL(24, 282, 15),
+QT_MOC_LITERAL(25, 298, 3),
+QT_MOC_LITERAL(26, 302, 5),
+QT_MOC_LITERAL(27, 308, 4),
+QT_MOC_LITERAL(28, 313, 9),
+QT_MOC_LITERAL(29, 323, 19),
+QT_MOC_LITERAL(30, 343, 1),
+QT_MOC_LITERAL(31, 345, 4),
+QT_MOC_LITERAL(32, 350, 13),
+QT_MOC_LITERAL(33, 364, 12),
+QT_MOC_LITERAL(34, 377, 6),
+QT_MOC_LITERAL(35, 384, 10),
+QT_MOC_LITERAL(36, 395, 7),
+QT_MOC_LITERAL(37, 403, 9),
+QT_MOC_LITERAL(38, 413, 6),
+QT_MOC_LITERAL(39, 420, 17),
+QT_MOC_LITERAL(40, 438, 15),
+QT_MOC_LITERAL(41, 454, 8),
+QT_MOC_LITERAL(42, 463, 24),
+QT_MOC_LITERAL(43, 488, 17),
+QT_MOC_LITERAL(44, 506, 19),
+QT_MOC_LITERAL(45, 526, 5)
     },
     "MainWindow\0spectrumChanged\0\0"
     "QVector<double>&\0sample\0positionChanged\0"
     "position\0levels\0left\0right\0"
     "elapsedTimeChanged\0elapsed\0"
-    "addFolderToLibrary\0folder\0goToItem\0"
-    "index\0loadMedia\0loadPlaylist\0"
+    "addFolderToLibrary\0folder\0playPauseChanged\0"
+    "goToItem\0index\0loadMedia\0loadPlaylist\0"
     "onAddMediaToPlayList\0media\0"
     "mediaStatusChanged\0QMediaPlayer::MediaStatus\0"
     "status\0metaDataChanged\0key\0value\0next\0"
@@ -87,6 +91,8 @@ QT_MOC_LITERAL(41, 446, 24)
     "setMediaAt\0percent\0setVolume\0volume\0"
     "spectrumAvailable\0QVector<double>\0"
     "spectrum\0metaDataAvailableChanged\0"
+    "mediaStateChanged\0QMediaPlayer::State\0"
+    "state\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -96,36 +102,38 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      20,   14, // methods
+      22,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       5,       // signalCount
+       6,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,  114,    2, 0x06,
-       5,    1,  117,    2, 0x06,
-       7,    2,  120,    2, 0x06,
-      10,    1,  125,    2, 0x06,
-      12,    1,  128,    2, 0x06,
+       1,    1,  124,    2, 0x06,
+       5,    1,  127,    2, 0x06,
+       7,    2,  130,    2, 0x06,
+      10,    1,  135,    2, 0x06,
+      12,    1,  138,    2, 0x06,
+      14,    1,  141,    2, 0x06,
 
  // slots: name, argc, parameters, tag, flags
-      14,    1,  131,    2, 0x0a,
-      16,    0,  134,    2, 0x0a,
-      17,    0,  135,    2, 0x0a,
-      18,    1,  136,    2, 0x0a,
-      20,    1,  139,    2, 0x0a,
-      23,    2,  142,    2, 0x0a,
-      26,    0,  147,    2, 0x0a,
-      27,    0,  148,    2, 0x0a,
-      28,    1,  149,    2, 0x0a,
-      30,    0,  152,    2, 0x0a,
-      31,    1,  153,    2, 0x0a,
-      34,    1,  156,    2, 0x0a,
-      36,    1,  159,    2, 0x0a,
-      38,    1,  162,    2, 0x0a,
-      41,    1,  165,    2, 0x0a,
+      15,    1,  144,    2, 0x0a,
+      17,    0,  147,    2, 0x0a,
+      18,    0,  148,    2, 0x0a,
+      19,    1,  149,    2, 0x0a,
+      21,    1,  152,    2, 0x0a,
+      24,    2,  155,    2, 0x0a,
+      27,    0,  160,    2, 0x0a,
+      28,    0,  161,    2, 0x0a,
+      29,    1,  162,    2, 0x0a,
+      31,    0,  165,    2, 0x0a,
+      32,    1,  166,    2, 0x0a,
+      35,    1,  169,    2, 0x0a,
+      37,    1,  172,    2, 0x0a,
+      39,    1,  175,    2, 0x0a,
+      42,    1,  178,    2, 0x0a,
+      43,    1,  181,    2, 0x0a,
 
  // signals: parameters
     QMetaType::Int, 0x80000000 | 3,    4,
@@ -133,23 +141,25 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Int, QMetaType::Double, QMetaType::Double,    8,    9,
     QMetaType::Int, QMetaType::LongLong,   11,
     QMetaType::Int, QMetaType::QString,   13,
+    QMetaType::Int, QMetaType::Bool,    2,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::QModelIndex,   15,
+    QMetaType::Void, QMetaType::QModelIndex,   16,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   19,
-    QMetaType::Void, 0x80000000 | 21,   22,
-    QMetaType::Void, QMetaType::QString, QMetaType::QVariant,   24,   25,
+    QMetaType::Void, QMetaType::QString,   20,
+    QMetaType::Void, 0x80000000 | 22,   23,
+    QMetaType::Void, QMetaType::QString, QMetaType::QVariant,   25,   26,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::LongLong,   29,
+    QMetaType::Void, QMetaType::LongLong,   30,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 32,   33,
-    QMetaType::Void, QMetaType::Int,   35,
-    QMetaType::Void, QMetaType::Int,   37,
-    QMetaType::Void, 0x80000000 | 39,   40,
+    QMetaType::Void, 0x80000000 | 33,   34,
+    QMetaType::Void, QMetaType::Int,   36,
+    QMetaType::Void, QMetaType::Int,   38,
+    QMetaType::Void, 0x80000000 | 40,   41,
     QMetaType::Void, QMetaType::Bool,    2,
+    QMetaType::Void, 0x80000000 | 44,   45,
 
        0        // eod
 };
@@ -169,45 +179,55 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         case 4: { int _r = _t->addFolderToLibrary((*reinterpret_cast< QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
-        case 5: _t->goToItem((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
-        case 6: _t->loadMedia(); break;
-        case 7: _t->loadPlaylist(); break;
-        case 8: _t->onAddMediaToPlayList((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 9: _t->mediaStatusChanged((*reinterpret_cast< QMediaPlayer::MediaStatus(*)>(_a[1]))); break;
-        case 10: _t->metaDataChanged((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QVariant(*)>(_a[2]))); break;
-        case 11: _t->next(); break;
-        case 12: _t->playPause(); break;
-        case 13: _t->slotPositionChanged((*reinterpret_cast< qint64(*)>(_a[1]))); break;
-        case 14: _t->prev(); break;
-        case 15: _t->processBuffer((*reinterpret_cast< QAudioBuffer(*)>(_a[1]))); break;
-        case 16: _t->setMediaAt((*reinterpret_cast< qint32(*)>(_a[1]))); break;
-        case 17: _t->setVolume((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 18: _t->spectrumAvailable((*reinterpret_cast< QVector<double>(*)>(_a[1]))); break;
-        case 19: _t->metaDataAvailableChanged((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 5: { int _r = _t->playPauseChanged((*reinterpret_cast< bool(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
+        case 6: _t->goToItem((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 7: _t->loadMedia(); break;
+        case 8: _t->loadPlaylist(); break;
+        case 9: _t->onAddMediaToPlayList((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 10: _t->mediaStatusChanged((*reinterpret_cast< QMediaPlayer::MediaStatus(*)>(_a[1]))); break;
+        case 11: _t->metaDataChanged((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QVariant(*)>(_a[2]))); break;
+        case 12: _t->next(); break;
+        case 13: _t->playPause(); break;
+        case 14: _t->slotPositionChanged((*reinterpret_cast< qint64(*)>(_a[1]))); break;
+        case 15: _t->prev(); break;
+        case 16: _t->processBuffer((*reinterpret_cast< QAudioBuffer(*)>(_a[1]))); break;
+        case 17: _t->setMediaAt((*reinterpret_cast< qint32(*)>(_a[1]))); break;
+        case 18: _t->setVolume((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 19: _t->spectrumAvailable((*reinterpret_cast< QVector<double>(*)>(_a[1]))); break;
+        case 20: _t->metaDataAvailableChanged((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 21: _t->mediaStateChanged((*reinterpret_cast< QMediaPlayer::State(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<int*>(_a[0]) = -1; break;
-        case 9:
+        case 10:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
                 *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QMediaPlayer::MediaStatus >(); break;
             }
             break;
-        case 15:
+        case 16:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
                 *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QAudioBuffer >(); break;
             }
             break;
-        case 18:
+        case 19:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
                 *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QVector<double> >(); break;
+            }
+            break;
+        case 21:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            case 0:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QMediaPlayer::State >(); break;
             }
             break;
         }
@@ -244,6 +264,12 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
                 *result = 4;
             }
         }
+        {
+            typedef int (MainWindow::*_t)(bool );
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&MainWindow::playPauseChanged)) {
+                *result = 5;
+            }
+        }
     }
 }
 
@@ -272,13 +298,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 20)
+        if (_id < 22)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 20;
+        _id -= 22;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 20)
+        if (_id < 22)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 20;
+        _id -= 22;
     }
     return _id;
 }
@@ -325,6 +351,15 @@ int MainWindow::addFolderToLibrary(QString _t1)
     int _t0 = int();
     void *_a[] = { const_cast<void*>(reinterpret_cast<const void*>(&_t0)), const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 4, _a);
+    return _t0;
+}
+
+// SIGNAL 5
+int MainWindow::playPauseChanged(bool _t1)
+{
+    int _t0 = int();
+    void *_a[] = { const_cast<void*>(reinterpret_cast<const void*>(&_t0)), const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 5, _a);
     return _t0;
 }
 QT_END_MOC_NAMESPACE

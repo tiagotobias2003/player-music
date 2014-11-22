@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">QWidget{background-color:black;}</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="sizePolicy">
@@ -29,7 +29,10 @@
       <item>
        <widget class="QListView" name="listViewPlaylist">
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QWidget{color:rgb(206, 206, 206);}</string>
+        </property>
+        <property name="uniformItemSizes">
+         <bool>false</bool>
         </property>
        </widget>
       </item>
