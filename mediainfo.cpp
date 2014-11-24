@@ -47,6 +47,7 @@ void MediaInfo::setAtribute(QString property, QString value){
 
   // just display the text into the label :P
     ui->label->setText(artist+" / "+title+" / "+album+ " / "+track);
+    //ui->label->setText("As mãos da vovó\nAplaudiram na igreja no domingo de manhã\nAs mãos da vovó\nTocavam tamborim tão bem\nAs mãos da vovó\nCostumavam dar avisos\nEla dizia, Billy, não corra tão rápido\nVocê pode cair em um pedaço de vidro\nPode ter cobras na grama\nAs mãos da vovó\n\nAs mãos da vovó\n\n\n\n\n\n\n\nTESTE");
 }
 
 void MediaInfo::allReady()

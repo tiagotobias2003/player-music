@@ -24,10 +24,11 @@
 #include <QtMultimedia/QMediaPlayer>
 #include <QUrl>
 #include <QVector>
-
+#include <QList>
 
 #include "fftcalc.h"
 #include "playlistmodel.h"
+#include "news.h"
 
 namespace Ui {
 class MainWindow;
@@ -65,6 +66,7 @@ public slots:
     void spectrumAvailable(QVector<double> spectrum);
     void metaDataAvailableChanged(bool);
     void mediaStateChanged(QMediaPlayer::State state);
+    void readNews();
 
 private:
     // User interface widget
@@ -104,6 +106,13 @@ private:
 
     // left and right mean levels
     double levelLeft, levelRight;
+
+    news noticias;
+
+    QList<notice> conteudo;
+
+    int currentNews;
+
 signals:
     // telle a new buffer from audio prober
     int spectrumChanged(QVector<double> &sample);

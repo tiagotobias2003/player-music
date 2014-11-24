@@ -53,7 +53,9 @@ SOURCES       = main.cpp \
 		fftcalc.cpp \
 		mediainfo.cpp \
 		playlistmodel.cpp \
-		music_info.cpp qrc_resources.cpp \
+		music_info.cpp \
+		news.cpp \
+		notice.cpp qrc_resources.cpp \
 		moc_mainwindow.cpp \
 		moc_spectrograph.cpp \
 		moc_controls.cpp \
@@ -63,7 +65,8 @@ SOURCES       = main.cpp \
 		moc_abstractspectrograph.cpp \
 		moc_abstractmediainfo.cpp \
 		moc_playlistmodel.cpp \
-		moc_music_info.cpp
+		moc_music_info.cpp \
+		moc_news.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		spectrograph.o \
@@ -73,6 +76,8 @@ OBJECTS       = main.o \
 		mediainfo.o \
 		playlistmodel.o \
 		music_info.o \
+		news.o \
+		notice.o \
 		qrc_resources.o \
 		moc_mainwindow.o \
 		moc_spectrograph.o \
@@ -83,7 +88,8 @@ OBJECTS       = main.o \
 		moc_abstractspectrograph.o \
 		moc_abstractmediainfo.o \
 		moc_playlistmodel.o \
-		moc_music_info.o
+		moc_music_info.o \
+		moc_news.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -375,7 +381,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/player-flat1.0.0 || mkdir -p .tmp/player-flat1.0.0
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/player-flat1.0.0/ && $(COPY_FILE) --parents resources.qrc .tmp/player-flat1.0.0/ && $(COPY_FILE) --parents mainwindow.h spectrograph.h fft.h controls.h fftcalc.h mediainfo.h abstractcontrol.h abstractspectrograph.h abstractmediainfo.h playlistmodel.h music_info.h .tmp/player-flat1.0.0/ && $(COPY_FILE) --parents main.cpp mainwindow.cpp spectrograph.cpp fft.cpp controls.cpp fftcalc.cpp mediainfo.cpp playlistmodel.cpp music_info.cpp .tmp/player-flat1.0.0/ && $(COPY_FILE) --parents mainwindow.ui controls.ui mediainfo.ui .tmp/player-flat1.0.0/ && (cd `dirname .tmp/player-flat1.0.0` && $(TAR) player-flat1.0.0.tar player-flat1.0.0 && $(COMPRESS) player-flat1.0.0.tar) && $(MOVE) `dirname .tmp/player-flat1.0.0`/player-flat1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/player-flat1.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/player-flat1.0.0/ && $(COPY_FILE) --parents resources.qrc .tmp/player-flat1.0.0/ && $(COPY_FILE) --parents mainwindow.h spectrograph.h fft.h controls.h fftcalc.h mediainfo.h abstractcontrol.h abstractspectrograph.h abstractmediainfo.h playlistmodel.h music_info.h news.h notice.h .tmp/player-flat1.0.0/ && $(COPY_FILE) --parents main.cpp mainwindow.cpp spectrograph.cpp fft.cpp controls.cpp fftcalc.cpp mediainfo.cpp playlistmodel.cpp music_info.cpp news.cpp notice.cpp .tmp/player-flat1.0.0/ && $(COPY_FILE) --parents mainwindow.ui controls.ui mediainfo.ui .tmp/player-flat1.0.0/ && (cd `dirname .tmp/player-flat1.0.0` && $(TAR) player-flat1.0.0.tar player-flat1.0.0 && $(COMPRESS) player-flat1.0.0.tar) && $(MOVE) `dirname .tmp/player-flat1.0.0`/player-flat1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/player-flat1.0.0
 
 
 clean:compiler_clean 
@@ -401,14 +407,14 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_resources.cpp
 qrc_resources.cpp: resources.qrc \
 		resources/next.png \
+		resources/pause.png \
 		resources/prev.png \
-		resources/play.png \
-		resources/pause.png
+		resources/play.png
 	/usr/lib/x86_64-linux-gnu/qt5/bin/rcc -name resources resources.qrc -o qrc_resources.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_spectrograph.cpp moc_controls.cpp moc_fftcalc.cpp moc_mediainfo.cpp moc_abstractcontrol.cpp moc_abstractspectrograph.cpp moc_abstractmediainfo.cpp moc_playlistmodel.cpp moc_music_info.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_spectrograph.cpp moc_controls.cpp moc_fftcalc.cpp moc_mediainfo.cpp moc_abstractcontrol.cpp moc_abstractspectrograph.cpp moc_abstractmediainfo.cpp moc_playlistmodel.cpp moc_music_info.cpp moc_news.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_spectrograph.cpp moc_controls.cpp moc_fftcalc.cpp moc_mediainfo.cpp moc_abstractcontrol.cpp moc_abstractspectrograph.cpp moc_abstractmediainfo.cpp moc_playlistmodel.cpp moc_music_info.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_spectrograph.cpp moc_controls.cpp moc_fftcalc.cpp moc_mediainfo.cpp moc_abstractcontrol.cpp moc_abstractspectrograph.cpp moc_abstractmediainfo.cpp moc_playlistmodel.cpp moc_music_info.cpp moc_news.cpp
 moc_mainwindow.cpp: /usr/include/qt5/QtMultimedia/QAudioBuffer \
 		/usr/include/qt5/QtMultimedia/qaudiobuffer.h \
 		/usr/include/qt5/QtCore/qshareddata.h \
@@ -877,6 +883,13 @@ moc_mainwindow.cpp: /usr/include/qt5/QtMultimedia/QAudioBuffer \
 		fft.h \
 		playlistmodel.h \
 		/usr/include/qt5/QtCore/QAbstractItemModel \
+		news.h \
+		/usr/include/qt5/QtNetwork/QNetworkReply \
+		/usr/include/qt5/QtNetwork/QSslError \
+		/usr/include/qt5/QtCore/QJsonArray \
+		/usr/include/qt5/QtCore/QJsonDocument \
+		/usr/include/qt5/QtCore/QJsonObject \
+		notice.h \
 		mainwindow.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) $(INCPATH) -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc_mainwindow.cpp
 
@@ -1329,6 +1342,46 @@ moc_mediainfo.cpp: abstractmediainfo.h \
 		/usr/include/qt5/QtGui/qvector2d.h \
 		/usr/include/qt5/QtGui/qtouchdevice.h \
 		/usr/include/qt5/QtCore/QString \
+		music_info.h \
+		/usr/include/qt5/QtCore/QFile \
+		/usr/include/qt5/QtCore/QFileInfo \
+		/usr/include/qt5/QtCore/qfileinfo.h \
+		/usr/include/qt5/QtCore/QList \
+		/usr/include/qt5/QtNetwork/QNetworkAccessManager \
+		/usr/include/qt5/QtNetwork/qnetworkaccessmanager.h \
+		/usr/include/qt5/QtCore/QObject \
+		/usr/include/qt5/QtNetwork/QSslConfiguration \
+		/usr/include/qt5/QtNetwork/qsslconfiguration.h \
+		/usr/include/qt5/QtNetwork/qsslsocket.h \
+		/usr/include/qt5/QtNetwork/qtcpsocket.h \
+		/usr/include/qt5/QtNetwork/qabstractsocket.h \
+		/usr/include/qt5/QtNetwork/qsslerror.h \
+		/usr/include/qt5/QtNetwork/qsslcertificate.h \
+		/usr/include/qt5/QtCore/qcryptographichash.h \
+		/usr/include/qt5/QtCore/qdatetime.h \
+		/usr/include/qt5/QtNetwork/qssl.h \
+		/usr/include/qt5/QtCore/QFlags \
+		/usr/include/qt5/QtNetwork/QNetworkRequest \
+		/usr/include/qt5/QtNetwork/qnetworkrequest.h \
+		/usr/include/qt5/QtCore/QSharedDataPointer \
+		/usr/include/qt5/QtCore/QUrl \
+		/usr/include/qt5/QtCore/QVariant \
+		/usr/include/qt5/QtNetwork/QNetworkReply \
+		/usr/include/qt5/QtNetwork/qnetworkreply.h \
+		/usr/include/qt5/QtCore/QIODevice \
+		/usr/include/qt5/QtNetwork/QSslError \
+		/usr/include/qt5/QtCore/QStringList \
+		/usr/include/qt5/QtCore/QTimer \
+		/usr/include/qt5/QtCore/qtimer.h \
+		/usr/include/qt5/QtCore/qbasictimer.h \
+		/usr/include/qt5/QtCore/QDebug \
+		/usr/include/qt5/QtCore/QJsonArray \
+		/usr/include/qt5/QtCore/qjsonarray.h \
+		/usr/include/qt5/QtCore/qjsonvalue.h \
+		/usr/include/qt5/QtCore/QJsonDocument \
+		/usr/include/qt5/QtCore/qjsondocument.h \
+		/usr/include/qt5/QtCore/QJsonObject \
+		/usr/include/qt5/QtCore/qjsonobject.h \
 		/usr/include/qt5/QtGui/QStandardItemModel \
 		/usr/include/qt5/QtGui/qstandarditemmodel.h \
 		/usr/include/qt5/QtCore/qabstractitemmodel.h \
@@ -1878,8 +1931,134 @@ moc_music_info.cpp: /usr/include/qt5/QtCore/QFile \
 		/usr/include/qt5/QtCore/QTimer \
 		/usr/include/qt5/QtCore/qtimer.h \
 		/usr/include/qt5/QtCore/qbasictimer.h \
+		/usr/include/qt5/QtCore/QDebug \
+		/usr/include/qt5/QtCore/QJsonArray \
+		/usr/include/qt5/QtCore/qjsonarray.h \
+		/usr/include/qt5/QtCore/qjsonvalue.h \
+		/usr/include/qt5/QtCore/QJsonDocument \
+		/usr/include/qt5/QtCore/qjsondocument.h \
+		/usr/include/qt5/QtCore/QJsonObject \
+		/usr/include/qt5/QtCore/qjsonobject.h \
 		music_info.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) $(INCPATH) -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include music_info.h -o moc_music_info.cpp
+
+moc_news.cpp: /usr/include/qt5/QtNetwork/QNetworkAccessManager \
+		/usr/include/qt5/QtNetwork/qnetworkaccessmanager.h \
+		/usr/include/qt5/QtCore/QObject \
+		/usr/include/qt5/QtCore/qobject.h \
+		/usr/include/qt5/QtCore/qobjectdefs.h \
+		/usr/include/qt5/QtCore/qnamespace.h \
+		/usr/include/qt5/QtCore/qglobal.h \
+		/usr/include/qt5/QtCore/qconfig.h \
+		/usr/include/qt5/QtCore/qfeatures.h \
+		/usr/include/qt5/QtCore/qsystemdetection.h \
+		/usr/include/qt5/QtCore/qprocessordetection.h \
+		/usr/include/qt5/QtCore/qcompilerdetection.h \
+		/usr/include/qt5/QtCore/qglobalstatic.h \
+		/usr/include/qt5/QtCore/qatomic.h \
+		/usr/include/qt5/QtCore/qbasicatomic.h \
+		/usr/include/qt5/QtCore/qatomic_bootstrap.h \
+		/usr/include/qt5/QtCore/qgenericatomic.h \
+		/usr/include/qt5/QtCore/qatomic_msvc.h \
+		/usr/include/qt5/QtCore/qatomic_integrity.h \
+		/usr/include/qt5/QtCore/qoldbasicatomic.h \
+		/usr/include/qt5/QtCore/qatomic_vxworks.h \
+		/usr/include/qt5/QtCore/qatomic_power.h \
+		/usr/include/qt5/QtCore/qatomic_alpha.h \
+		/usr/include/qt5/QtCore/qatomic_armv7.h \
+		/usr/include/qt5/QtCore/qatomic_armv6.h \
+		/usr/include/qt5/QtCore/qatomic_armv5.h \
+		/usr/include/qt5/QtCore/qatomic_bfin.h \
+		/usr/include/qt5/QtCore/qatomic_ia64.h \
+		/usr/include/qt5/QtCore/qatomic_mips.h \
+		/usr/include/qt5/QtCore/qatomic_s390.h \
+		/usr/include/qt5/QtCore/qatomic_sh4a.h \
+		/usr/include/qt5/QtCore/qatomic_sparc.h \
+		/usr/include/qt5/QtCore/qatomic_gcc.h \
+		/usr/include/qt5/QtCore/qatomic_x86.h \
+		/usr/include/qt5/QtCore/qatomic_cxx11.h \
+		/usr/include/qt5/QtCore/qatomic_unix.h \
+		/usr/include/qt5/QtCore/qmutex.h \
+		/usr/include/qt5/QtCore/qlogging.h \
+		/usr/include/qt5/QtCore/qflags.h \
+		/usr/include/qt5/QtCore/qtypeinfo.h \
+		/usr/include/qt5/QtCore/qtypetraits.h \
+		/usr/include/qt5/QtCore/qsysinfo.h \
+		/usr/include/qt5/QtCore/qobjectdefs_impl.h \
+		/usr/include/qt5/QtCore/qstring.h \
+		/usr/include/qt5/QtCore/qchar.h \
+		/usr/include/qt5/QtCore/qbytearray.h \
+		/usr/include/qt5/QtCore/qrefcount.h \
+		/usr/include/qt5/QtCore/qarraydata.h \
+		/usr/include/qt5/QtCore/qstringbuilder.h \
+		/usr/include/qt5/QtCore/qlist.h \
+		/usr/include/qt5/QtCore/qalgorithms.h \
+		/usr/include/qt5/QtCore/qiterator.h \
+		/usr/include/qt5/QtCore/qcoreevent.h \
+		/usr/include/qt5/QtCore/qscopedpointer.h \
+		/usr/include/qt5/QtCore/qmetatype.h \
+		/usr/include/qt5/QtCore/qvarlengtharray.h \
+		/usr/include/qt5/QtCore/qcontainerfwd.h \
+		/usr/include/qt5/QtCore/qisenum.h \
+		/usr/include/qt5/QtCore/qobject_impl.h \
+		/usr/include/qt5/QtNetwork/QSslConfiguration \
+		/usr/include/qt5/QtNetwork/qsslconfiguration.h \
+		/usr/include/qt5/QtCore/qshareddata.h \
+		/usr/include/qt5/QtNetwork/qsslsocket.h \
+		/usr/include/qt5/QtCore/qregexp.h \
+		/usr/include/qt5/QtNetwork/qtcpsocket.h \
+		/usr/include/qt5/QtNetwork/qabstractsocket.h \
+		/usr/include/qt5/QtCore/qiodevice.h \
+		/usr/include/qt5/QtCore/qdebug.h \
+		/usr/include/qt5/QtCore/qhash.h \
+		/usr/include/qt5/QtCore/qpair.h \
+		/usr/include/qt5/QtCore/qmap.h \
+		/usr/include/qt5/QtCore/qtextstream.h \
+		/usr/include/qt5/QtCore/qlocale.h \
+		/usr/include/qt5/QtCore/qvariant.h \
+		/usr/include/qt5/QtCore/qstringlist.h \
+		/usr/include/qt5/QtCore/qdatastream.h \
+		/usr/include/qt5/QtCore/qstringmatcher.h \
+		/usr/include/qt5/QtCore/qvector.h \
+		/usr/include/qt5/QtCore/qpoint.h \
+		/usr/include/qt5/QtCore/qset.h \
+		/usr/include/qt5/QtCore/qcontiguouscache.h \
+		/usr/include/qt5/QtNetwork/qsslerror.h \
+		/usr/include/qt5/QtNetwork/qsslcertificate.h \
+		/usr/include/qt5/QtCore/qcryptographichash.h \
+		/usr/include/qt5/QtCore/qdatetime.h \
+		/usr/include/qt5/QtCore/qsharedpointer.h \
+		/usr/include/qt5/QtCore/qsharedpointer_impl.h \
+		/usr/include/qt5/QtNetwork/qssl.h \
+		/usr/include/qt5/QtCore/QFlags \
+		/usr/include/qt5/QtNetwork/QNetworkRequest \
+		/usr/include/qt5/QtNetwork/qnetworkrequest.h \
+		/usr/include/qt5/QtCore/QSharedDataPointer \
+		/usr/include/qt5/QtCore/QString \
+		/usr/include/qt5/QtCore/QUrl \
+		/usr/include/qt5/QtCore/qurl.h \
+		/usr/include/qt5/QtCore/qurlquery.h \
+		/usr/include/qt5/QtCore/QVariant \
+		/usr/include/qt5/QtNetwork/QNetworkReply \
+		/usr/include/qt5/QtNetwork/qnetworkreply.h \
+		/usr/include/qt5/QtCore/QIODevice \
+		/usr/include/qt5/QtNetwork/QSslError \
+		/usr/include/qt5/QtCore/QStringList \
+		/usr/include/qt5/QtCore/QTimer \
+		/usr/include/qt5/QtCore/qtimer.h \
+		/usr/include/qt5/QtCore/qbasictimer.h \
+		/usr/include/qt5/QtCore/QDebug \
+		/usr/include/qt5/QtCore/QJsonArray \
+		/usr/include/qt5/QtCore/qjsonarray.h \
+		/usr/include/qt5/QtCore/qjsonvalue.h \
+		/usr/include/qt5/QtCore/QJsonDocument \
+		/usr/include/qt5/QtCore/qjsondocument.h \
+		/usr/include/qt5/QtCore/QJsonObject \
+		/usr/include/qt5/QtCore/qjsonobject.h \
+		/usr/include/qt5/QtCore/QList \
+		notice.h \
+		news.h
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) $(INCPATH) -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include news.h -o moc_news.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -2245,6 +2424,46 @@ ui_mainwindow.h: mainwindow.ui \
 		/usr/include/qt5/QtGui/qvector2d.h \
 		/usr/include/qt5/QtGui/qtouchdevice.h \
 		/usr/include/qt5/QtCore/QString \
+		music_info.h \
+		/usr/include/qt5/QtCore/QFile \
+		/usr/include/qt5/QtCore/QFileInfo \
+		/usr/include/qt5/QtCore/qfileinfo.h \
+		/usr/include/qt5/QtCore/QList \
+		/usr/include/qt5/QtNetwork/QNetworkAccessManager \
+		/usr/include/qt5/QtNetwork/qnetworkaccessmanager.h \
+		/usr/include/qt5/QtCore/QObject \
+		/usr/include/qt5/QtNetwork/QSslConfiguration \
+		/usr/include/qt5/QtNetwork/qsslconfiguration.h \
+		/usr/include/qt5/QtNetwork/qsslsocket.h \
+		/usr/include/qt5/QtNetwork/qtcpsocket.h \
+		/usr/include/qt5/QtNetwork/qabstractsocket.h \
+		/usr/include/qt5/QtNetwork/qsslerror.h \
+		/usr/include/qt5/QtNetwork/qsslcertificate.h \
+		/usr/include/qt5/QtCore/qcryptographichash.h \
+		/usr/include/qt5/QtCore/qdatetime.h \
+		/usr/include/qt5/QtNetwork/qssl.h \
+		/usr/include/qt5/QtCore/QFlags \
+		/usr/include/qt5/QtNetwork/QNetworkRequest \
+		/usr/include/qt5/QtNetwork/qnetworkrequest.h \
+		/usr/include/qt5/QtCore/QSharedDataPointer \
+		/usr/include/qt5/QtCore/QUrl \
+		/usr/include/qt5/QtCore/QVariant \
+		/usr/include/qt5/QtNetwork/QNetworkReply \
+		/usr/include/qt5/QtNetwork/qnetworkreply.h \
+		/usr/include/qt5/QtCore/QIODevice \
+		/usr/include/qt5/QtNetwork/QSslError \
+		/usr/include/qt5/QtCore/QStringList \
+		/usr/include/qt5/QtCore/QTimer \
+		/usr/include/qt5/QtCore/qtimer.h \
+		/usr/include/qt5/QtCore/qbasictimer.h \
+		/usr/include/qt5/QtCore/QDebug \
+		/usr/include/qt5/QtCore/QJsonArray \
+		/usr/include/qt5/QtCore/qjsonarray.h \
+		/usr/include/qt5/QtCore/qjsonvalue.h \
+		/usr/include/qt5/QtCore/QJsonDocument \
+		/usr/include/qt5/QtCore/qjsondocument.h \
+		/usr/include/qt5/QtCore/QJsonObject \
+		/usr/include/qt5/QtCore/qjsonobject.h \
 		/usr/include/qt5/QtGui/QStandardItemModel \
 		/usr/include/qt5/QtGui/qstandarditemmodel.h \
 		/usr/include/qt5/QtCore/qabstractitemmodel.h \
@@ -2737,6 +2956,13 @@ main.o: main.cpp mainwindow.h \
 		fft.h \
 		playlistmodel.h \
 		/usr/include/qt5/QtCore/QAbstractItemModel \
+		news.h \
+		/usr/include/qt5/QtNetwork/QNetworkReply \
+		/usr/include/qt5/QtNetwork/QSslError \
+		/usr/include/qt5/QtCore/QJsonArray \
+		/usr/include/qt5/QtCore/QJsonDocument \
+		/usr/include/qt5/QtCore/QJsonObject \
+		notice.h \
 		/usr/include/qt5/QtWidgets/QApplication \
 		/usr/include/qt5/QtWidgets/qapplication.h \
 		/usr/include/qt5/QtWidgets/qdesktopwidget.h
@@ -3211,6 +3437,13 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		fft.h \
 		playlistmodel.h \
 		/usr/include/qt5/QtCore/QAbstractItemModel \
+		news.h \
+		/usr/include/qt5/QtNetwork/QNetworkReply \
+		/usr/include/qt5/QtNetwork/QSslError \
+		/usr/include/qt5/QtCore/QJsonArray \
+		/usr/include/qt5/QtCore/QJsonDocument \
+		/usr/include/qt5/QtCore/QJsonObject \
+		notice.h \
 		ui_mainwindow.h \
 		/usr/include/qt5/QtWidgets/QAction \
 		/usr/include/qt5/QtWidgets/qaction.h \
@@ -3220,23 +3453,18 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/usr/include/qt5/QtWidgets/qdesktopwidget.h \
 		/usr/include/qt5/QtWidgets/QButtonGroup \
 		/usr/include/qt5/QtWidgets/qbuttongroup.h \
-		/usr/include/qt5/QtWidgets/QHBoxLayout \
-		/usr/include/qt5/QtWidgets/qboxlayout.h \
-		/usr/include/qt5/QtWidgets/qlayout.h \
-		/usr/include/qt5/QtWidgets/qlayoutitem.h \
-		/usr/include/qt5/QtWidgets/qgridlayout.h \
+		/usr/include/qt5/QtWidgets/QLabel \
+		/usr/include/qt5/QtWidgets/qlabel.h \
 		/usr/include/qt5/QtWidgets/QListView \
 		/usr/include/qt5/QtWidgets/qlistview.h \
 		/usr/include/qt5/QtWidgets/QMenu \
 		/usr/include/qt5/QtWidgets/qmenu.h \
 		/usr/include/qt5/QtWidgets/QMenuBar \
 		/usr/include/qt5/QtWidgets/qmenubar.h \
-		/usr/include/qt5/QtWidgets/QSpacerItem \
+		/usr/include/qt5/QtWidgets/QScrollArea \
+		/usr/include/qt5/QtWidgets/qscrollarea.h \
 		/usr/include/qt5/QtWidgets/QStatusBar \
 		/usr/include/qt5/QtWidgets/qstatusbar.h \
-		/usr/include/qt5/QtWidgets/QToolBar \
-		/usr/include/qt5/QtWidgets/qtoolbar.h \
-		/usr/include/qt5/QtWidgets/QVBoxLayout \
 		/usr/include/qt5/QtWidgets/QWidget \
 		controls.h \
 		abstractcontrol.h \
@@ -3244,6 +3472,8 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/usr/include/qt5/QtGui/QIcon \
 		mediainfo.h \
 		abstractmediainfo.h \
+		music_info.h \
+		/usr/include/qt5/QtCore/QFile \
 		/usr/include/qt5/QtGui/QStandardItem \
 		spectrograph.h \
 		abstractspectrograph.h \
@@ -3782,13 +4012,52 @@ mediainfo.o: mediainfo.cpp mediainfo.h \
 		/usr/include/qt5/QtGui/qvector2d.h \
 		/usr/include/qt5/QtGui/qtouchdevice.h \
 		/usr/include/qt5/QtCore/QString \
+		music_info.h \
+		/usr/include/qt5/QtCore/QFile \
+		/usr/include/qt5/QtCore/QFileInfo \
+		/usr/include/qt5/QtCore/qfileinfo.h \
+		/usr/include/qt5/QtCore/QList \
+		/usr/include/qt5/QtNetwork/QNetworkAccessManager \
+		/usr/include/qt5/QtNetwork/qnetworkaccessmanager.h \
+		/usr/include/qt5/QtCore/QObject \
+		/usr/include/qt5/QtNetwork/QSslConfiguration \
+		/usr/include/qt5/QtNetwork/qsslconfiguration.h \
+		/usr/include/qt5/QtNetwork/qsslsocket.h \
+		/usr/include/qt5/QtNetwork/qtcpsocket.h \
+		/usr/include/qt5/QtNetwork/qabstractsocket.h \
+		/usr/include/qt5/QtNetwork/qsslerror.h \
+		/usr/include/qt5/QtNetwork/qsslcertificate.h \
+		/usr/include/qt5/QtCore/qcryptographichash.h \
+		/usr/include/qt5/QtCore/qdatetime.h \
+		/usr/include/qt5/QtNetwork/qssl.h \
+		/usr/include/qt5/QtCore/QFlags \
+		/usr/include/qt5/QtNetwork/QNetworkRequest \
+		/usr/include/qt5/QtNetwork/qnetworkrequest.h \
+		/usr/include/qt5/QtCore/QSharedDataPointer \
+		/usr/include/qt5/QtCore/QUrl \
+		/usr/include/qt5/QtCore/QVariant \
+		/usr/include/qt5/QtNetwork/QNetworkReply \
+		/usr/include/qt5/QtNetwork/qnetworkreply.h \
+		/usr/include/qt5/QtCore/QIODevice \
+		/usr/include/qt5/QtNetwork/QSslError \
+		/usr/include/qt5/QtCore/QStringList \
+		/usr/include/qt5/QtCore/QTimer \
+		/usr/include/qt5/QtCore/qtimer.h \
+		/usr/include/qt5/QtCore/qbasictimer.h \
+		/usr/include/qt5/QtCore/QDebug \
+		/usr/include/qt5/QtCore/QJsonArray \
+		/usr/include/qt5/QtCore/qjsonarray.h \
+		/usr/include/qt5/QtCore/qjsonvalue.h \
+		/usr/include/qt5/QtCore/QJsonDocument \
+		/usr/include/qt5/QtCore/qjsondocument.h \
+		/usr/include/qt5/QtCore/QJsonObject \
+		/usr/include/qt5/QtCore/qjsonobject.h \
 		/usr/include/qt5/QtGui/QStandardItemModel \
 		/usr/include/qt5/QtGui/qstandarditemmodel.h \
 		/usr/include/qt5/QtCore/qabstractitemmodel.h \
 		/usr/include/qt5/QtGui/qicon.h \
 		/usr/include/qt5/QtGui/QStandardItem \
 		ui_mediainfo.h \
-		/usr/include/qt5/QtCore/QVariant \
 		/usr/include/qt5/QtWidgets/QAction \
 		/usr/include/qt5/QtWidgets/qaction.h \
 		/usr/include/qt5/QtWidgets/qactiongroup.h \
@@ -3801,11 +4070,6 @@ mediainfo.o: mediainfo.cpp mediainfo.h \
 		/usr/include/qt5/QtGui/qinputmethod.h \
 		/usr/include/qt5/QtWidgets/QButtonGroup \
 		/usr/include/qt5/QtWidgets/qbuttongroup.h \
-		/usr/include/qt5/QtWidgets/QHBoxLayout \
-		/usr/include/qt5/QtWidgets/qboxlayout.h \
-		/usr/include/qt5/QtWidgets/qlayout.h \
-		/usr/include/qt5/QtWidgets/qlayoutitem.h \
-		/usr/include/qt5/QtWidgets/qgridlayout.h \
 		/usr/include/qt5/QtWidgets/QHeaderView \
 		/usr/include/qt5/QtWidgets/qheaderview.h \
 		/usr/include/qt5/QtWidgets/qabstractitemview.h \
@@ -3825,7 +4089,13 @@ mediainfo.o: mediainfo.cpp mediainfo.h \
 		/usr/include/qt5/QtWidgets/qrubberband.h \
 		/usr/include/qt5/QtWidgets/QLabel \
 		/usr/include/qt5/QtWidgets/qlabel.h \
-		/usr/include/qt5/QtCore/QDebug
+		/usr/include/qt5/QtWidgets/QScrollArea \
+		/usr/include/qt5/QtWidgets/qscrollarea.h \
+		/usr/include/qt5/QtWidgets/QVBoxLayout \
+		/usr/include/qt5/QtWidgets/qboxlayout.h \
+		/usr/include/qt5/QtWidgets/qlayout.h \
+		/usr/include/qt5/QtWidgets/qlayoutitem.h \
+		/usr/include/qt5/QtWidgets/qgridlayout.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mediainfo.o mediainfo.cpp
 
 playlistmodel.o: playlistmodel.cpp playlistmodel.h \
@@ -4075,8 +4345,184 @@ music_info.o: music_info.cpp /usr/include/qt5/QtCore/QCoreApplication \
 		/usr/include/qt5/QtCore/QTimer \
 		/usr/include/qt5/QtCore/qtimer.h \
 		/usr/include/qt5/QtCore/qbasictimer.h \
-		/usr/include/qt5/QtCore/QDebug
+		/usr/include/qt5/QtCore/QDebug \
+		/usr/include/qt5/QtCore/QJsonArray \
+		/usr/include/qt5/QtCore/qjsonarray.h \
+		/usr/include/qt5/QtCore/qjsonvalue.h \
+		/usr/include/qt5/QtCore/QJsonDocument \
+		/usr/include/qt5/QtCore/qjsondocument.h \
+		/usr/include/qt5/QtCore/QJsonObject \
+		/usr/include/qt5/QtCore/qjsonobject.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o music_info.o music_info.cpp
+
+news.o: news.cpp /usr/include/qt5/QtCore/QCoreApplication \
+		/usr/include/qt5/QtCore/qcoreapplication.h \
+		/usr/include/qt5/QtCore/qglobal.h \
+		/usr/include/qt5/QtCore/qconfig.h \
+		/usr/include/qt5/QtCore/qfeatures.h \
+		/usr/include/qt5/QtCore/qsystemdetection.h \
+		/usr/include/qt5/QtCore/qprocessordetection.h \
+		/usr/include/qt5/QtCore/qcompilerdetection.h \
+		/usr/include/qt5/QtCore/qglobalstatic.h \
+		/usr/include/qt5/QtCore/qatomic.h \
+		/usr/include/qt5/QtCore/qbasicatomic.h \
+		/usr/include/qt5/QtCore/qatomic_bootstrap.h \
+		/usr/include/qt5/QtCore/qgenericatomic.h \
+		/usr/include/qt5/QtCore/qatomic_msvc.h \
+		/usr/include/qt5/QtCore/qatomic_integrity.h \
+		/usr/include/qt5/QtCore/qoldbasicatomic.h \
+		/usr/include/qt5/QtCore/qatomic_vxworks.h \
+		/usr/include/qt5/QtCore/qatomic_power.h \
+		/usr/include/qt5/QtCore/qatomic_alpha.h \
+		/usr/include/qt5/QtCore/qatomic_armv7.h \
+		/usr/include/qt5/QtCore/qatomic_armv6.h \
+		/usr/include/qt5/QtCore/qatomic_armv5.h \
+		/usr/include/qt5/QtCore/qatomic_bfin.h \
+		/usr/include/qt5/QtCore/qatomic_ia64.h \
+		/usr/include/qt5/QtCore/qatomic_mips.h \
+		/usr/include/qt5/QtCore/qatomic_s390.h \
+		/usr/include/qt5/QtCore/qatomic_sh4a.h \
+		/usr/include/qt5/QtCore/qatomic_sparc.h \
+		/usr/include/qt5/QtCore/qatomic_gcc.h \
+		/usr/include/qt5/QtCore/qatomic_x86.h \
+		/usr/include/qt5/QtCore/qatomic_cxx11.h \
+		/usr/include/qt5/QtCore/qatomic_unix.h \
+		/usr/include/qt5/QtCore/qmutex.h \
+		/usr/include/qt5/QtCore/qlogging.h \
+		/usr/include/qt5/QtCore/qflags.h \
+		/usr/include/qt5/QtCore/qtypeinfo.h \
+		/usr/include/qt5/QtCore/qtypetraits.h \
+		/usr/include/qt5/QtCore/qsysinfo.h \
+		/usr/include/qt5/QtCore/qstring.h \
+		/usr/include/qt5/QtCore/qchar.h \
+		/usr/include/qt5/QtCore/qbytearray.h \
+		/usr/include/qt5/QtCore/qrefcount.h \
+		/usr/include/qt5/QtCore/qnamespace.h \
+		/usr/include/qt5/QtCore/qarraydata.h \
+		/usr/include/qt5/QtCore/qstringbuilder.h \
+		/usr/include/qt5/QtCore/qobject.h \
+		/usr/include/qt5/QtCore/qobjectdefs.h \
+		/usr/include/qt5/QtCore/qobjectdefs_impl.h \
+		/usr/include/qt5/QtCore/qlist.h \
+		/usr/include/qt5/QtCore/qalgorithms.h \
+		/usr/include/qt5/QtCore/qiterator.h \
+		/usr/include/qt5/QtCore/qcoreevent.h \
+		/usr/include/qt5/QtCore/qscopedpointer.h \
+		/usr/include/qt5/QtCore/qmetatype.h \
+		/usr/include/qt5/QtCore/qvarlengtharray.h \
+		/usr/include/qt5/QtCore/qcontainerfwd.h \
+		/usr/include/qt5/QtCore/qisenum.h \
+		/usr/include/qt5/QtCore/qobject_impl.h \
+		/usr/include/qt5/QtCore/qeventloop.h \
+		news.h \
+		/usr/include/qt5/QtNetwork/QNetworkAccessManager \
+		/usr/include/qt5/QtNetwork/qnetworkaccessmanager.h \
+		/usr/include/qt5/QtCore/QObject \
+		/usr/include/qt5/QtNetwork/QSslConfiguration \
+		/usr/include/qt5/QtNetwork/qsslconfiguration.h \
+		/usr/include/qt5/QtCore/qshareddata.h \
+		/usr/include/qt5/QtNetwork/qsslsocket.h \
+		/usr/include/qt5/QtCore/qregexp.h \
+		/usr/include/qt5/QtNetwork/qtcpsocket.h \
+		/usr/include/qt5/QtNetwork/qabstractsocket.h \
+		/usr/include/qt5/QtCore/qiodevice.h \
+		/usr/include/qt5/QtCore/qdebug.h \
+		/usr/include/qt5/QtCore/qhash.h \
+		/usr/include/qt5/QtCore/qpair.h \
+		/usr/include/qt5/QtCore/qmap.h \
+		/usr/include/qt5/QtCore/qtextstream.h \
+		/usr/include/qt5/QtCore/qlocale.h \
+		/usr/include/qt5/QtCore/qvariant.h \
+		/usr/include/qt5/QtCore/qstringlist.h \
+		/usr/include/qt5/QtCore/qdatastream.h \
+		/usr/include/qt5/QtCore/qstringmatcher.h \
+		/usr/include/qt5/QtCore/qvector.h \
+		/usr/include/qt5/QtCore/qpoint.h \
+		/usr/include/qt5/QtCore/qset.h \
+		/usr/include/qt5/QtCore/qcontiguouscache.h \
+		/usr/include/qt5/QtNetwork/qsslerror.h \
+		/usr/include/qt5/QtNetwork/qsslcertificate.h \
+		/usr/include/qt5/QtCore/qcryptographichash.h \
+		/usr/include/qt5/QtCore/qdatetime.h \
+		/usr/include/qt5/QtCore/qsharedpointer.h \
+		/usr/include/qt5/QtCore/qsharedpointer_impl.h \
+		/usr/include/qt5/QtNetwork/qssl.h \
+		/usr/include/qt5/QtCore/QFlags \
+		/usr/include/qt5/QtNetwork/QNetworkRequest \
+		/usr/include/qt5/QtNetwork/qnetworkrequest.h \
+		/usr/include/qt5/QtCore/QSharedDataPointer \
+		/usr/include/qt5/QtCore/QString \
+		/usr/include/qt5/QtCore/QUrl \
+		/usr/include/qt5/QtCore/qurl.h \
+		/usr/include/qt5/QtCore/qurlquery.h \
+		/usr/include/qt5/QtCore/QVariant \
+		/usr/include/qt5/QtNetwork/QNetworkReply \
+		/usr/include/qt5/QtNetwork/qnetworkreply.h \
+		/usr/include/qt5/QtCore/QIODevice \
+		/usr/include/qt5/QtNetwork/QSslError \
+		/usr/include/qt5/QtCore/QStringList \
+		/usr/include/qt5/QtCore/QTimer \
+		/usr/include/qt5/QtCore/qtimer.h \
+		/usr/include/qt5/QtCore/qbasictimer.h \
+		/usr/include/qt5/QtCore/QDebug \
+		/usr/include/qt5/QtCore/QJsonArray \
+		/usr/include/qt5/QtCore/qjsonarray.h \
+		/usr/include/qt5/QtCore/qjsonvalue.h \
+		/usr/include/qt5/QtCore/QJsonDocument \
+		/usr/include/qt5/QtCore/qjsondocument.h \
+		/usr/include/qt5/QtCore/QJsonObject \
+		/usr/include/qt5/QtCore/qjsonobject.h \
+		/usr/include/qt5/QtCore/QList \
+		notice.h \
+		/usr/include/qt5/QtCore/QArrayData
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o news.o news.cpp
+
+notice.o: notice.cpp notice.h \
+		/usr/include/qt5/QtCore/QString \
+		/usr/include/qt5/QtCore/qstring.h \
+		/usr/include/qt5/QtCore/qchar.h \
+		/usr/include/qt5/QtCore/qglobal.h \
+		/usr/include/qt5/QtCore/qconfig.h \
+		/usr/include/qt5/QtCore/qfeatures.h \
+		/usr/include/qt5/QtCore/qsystemdetection.h \
+		/usr/include/qt5/QtCore/qprocessordetection.h \
+		/usr/include/qt5/QtCore/qcompilerdetection.h \
+		/usr/include/qt5/QtCore/qglobalstatic.h \
+		/usr/include/qt5/QtCore/qatomic.h \
+		/usr/include/qt5/QtCore/qbasicatomic.h \
+		/usr/include/qt5/QtCore/qatomic_bootstrap.h \
+		/usr/include/qt5/QtCore/qgenericatomic.h \
+		/usr/include/qt5/QtCore/qatomic_msvc.h \
+		/usr/include/qt5/QtCore/qatomic_integrity.h \
+		/usr/include/qt5/QtCore/qoldbasicatomic.h \
+		/usr/include/qt5/QtCore/qatomic_vxworks.h \
+		/usr/include/qt5/QtCore/qatomic_power.h \
+		/usr/include/qt5/QtCore/qatomic_alpha.h \
+		/usr/include/qt5/QtCore/qatomic_armv7.h \
+		/usr/include/qt5/QtCore/qatomic_armv6.h \
+		/usr/include/qt5/QtCore/qatomic_armv5.h \
+		/usr/include/qt5/QtCore/qatomic_bfin.h \
+		/usr/include/qt5/QtCore/qatomic_ia64.h \
+		/usr/include/qt5/QtCore/qatomic_mips.h \
+		/usr/include/qt5/QtCore/qatomic_s390.h \
+		/usr/include/qt5/QtCore/qatomic_sh4a.h \
+		/usr/include/qt5/QtCore/qatomic_sparc.h \
+		/usr/include/qt5/QtCore/qatomic_gcc.h \
+		/usr/include/qt5/QtCore/qatomic_x86.h \
+		/usr/include/qt5/QtCore/qatomic_cxx11.h \
+		/usr/include/qt5/QtCore/qatomic_unix.h \
+		/usr/include/qt5/QtCore/qmutex.h \
+		/usr/include/qt5/QtCore/qlogging.h \
+		/usr/include/qt5/QtCore/qflags.h \
+		/usr/include/qt5/QtCore/qtypeinfo.h \
+		/usr/include/qt5/QtCore/qtypetraits.h \
+		/usr/include/qt5/QtCore/qsysinfo.h \
+		/usr/include/qt5/QtCore/qbytearray.h \
+		/usr/include/qt5/QtCore/qrefcount.h \
+		/usr/include/qt5/QtCore/qnamespace.h \
+		/usr/include/qt5/QtCore/qarraydata.h \
+		/usr/include/qt5/QtCore/qstringbuilder.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o notice.o notice.cpp
 
 qrc_resources.o: qrc_resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
@@ -4110,6 +4556,9 @@ moc_playlistmodel.o: moc_playlistmodel.cpp
 
 moc_music_info.o: moc_music_info.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_music_info.o moc_music_info.cpp
+
+moc_news.o: moc_news.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_news.o moc_news.cpp
 
 ####### Install
 

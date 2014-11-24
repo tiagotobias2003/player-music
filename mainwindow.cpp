@@ -8,8 +8,11 @@ MainWindow::MainWindow(QWidget *parent) :
   ui(new Ui::MainWindow),
   audioInfo(QAudioDeviceInfo::defaultInputDevice())
 {
+
   // draws the ui
   ui->setupUi(this);
+
+  noticias.search();
 
   // test for saving settings
   QCoreApplication::setOrganizationName("PlayerFlat");
@@ -53,6 +56,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
   // playlist plays in loop mode. It restarts after last song has finished playing.
   playlist->setPlaybackMode(QMediaPlaylist::Loop);
+
+  connect(&noticias,SIGNAL(ready()),this,SLOT(readNews()));
 
   // this allow the user to select the media it wants to play
   connect(ui->listViewPlaylist, SIGNAL(doubleClicked(QModelIndex)),
@@ -403,3 +408,33 @@ void MainWindow::mediaStateChanged(QMediaPlayer::State state){
     emit playPauseChanged(false);
   }
 }
+
+void MainWindow::readNews()
+{
+     QString text;
+     conteudo = noticias.getNews();
+     for(int i = 0; i < conteudo.size(); i++ )
+     {
+         QString head  = conteudo.value(i).getHeadLine();
+         QString url  = conteudo.value(i).getUrl();
+         QString pic  = conteudo.value(i).getPicture();
+         text = text+"\n"+head+"\n"+url+"\n"+pic+"\n";
+     }
+     //ui->label->setText(text);
+     ui ->NewsLabel ->setText(text);
+     //qDebug() << text;
+}
+
+/*for(int i = 0; i < conteudo.size(); i++ )
+{
+    QString head  = conteudo.value(i).getHeadLine();
+    QString url  = conteudo.value(i).getUrl();
+    QString pic  = conteudo.value(i).getPicture();
+    text = text+"\n"+head+"\n"+url+"\n"+pic+"\n";
+}
+//ui->label->setText(text);
+ui ->NewsLabel ->setText(text);
+//qDebug() << text;
+}*/
+
+//Qtimer no spectrografo

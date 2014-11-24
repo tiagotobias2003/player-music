@@ -13,9 +13,10 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QScrollArea>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -23,21 +24,44 @@ QT_BEGIN_NAMESPACE
 class Ui_MediaInfo
 {
 public:
-    QHBoxLayout *horizontalLayout;
+    QVBoxLayout *verticalLayout;
+    QScrollArea *scrollArea;
+    QWidget *scrollAreaWidgetContents_6;
+    QVBoxLayout *verticalLayout_2;
     QLabel *label;
 
     void setupUi(QWidget *MediaInfo)
     {
         if (MediaInfo->objectName().isEmpty())
             MediaInfo->setObjectName(QStringLiteral("MediaInfo"));
-        MediaInfo->resize(498, 266);
-        horizontalLayout = new QHBoxLayout(MediaInfo);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label = new QLabel(MediaInfo);
+        MediaInfo->resize(498, 456);
+        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(MediaInfo->sizePolicy().hasHeightForWidth());
+        MediaInfo->setSizePolicy(sizePolicy);
+        verticalLayout = new QVBoxLayout(MediaInfo);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        scrollArea = new QScrollArea(MediaInfo);
+        scrollArea->setObjectName(QStringLiteral("scrollArea"));
+        scrollArea->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContentsOnFirstShow);
+        scrollArea->setWidgetResizable(false);
+        scrollAreaWidgetContents_6 = new QWidget();
+        scrollAreaWidgetContents_6->setObjectName(QStringLiteral("scrollAreaWidgetContents_6"));
+        scrollAreaWidgetContents_6->setEnabled(true);
+        scrollAreaWidgetContents_6->setGeometry(QRect(0, 0, 478, 436));
+        verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents_6);
+        verticalLayout_2->setSpacing(10);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        label = new QLabel(scrollAreaWidgetContents_6);
         label->setObjectName(QStringLiteral("label"));
         label->setStyleSheet(QStringLiteral("QWidget{color:white;}"));
 
-        horizontalLayout->addWidget(label);
+        verticalLayout_2->addWidget(label);
+
+        scrollArea->setWidget(scrollAreaWidgetContents_6);
+
+        verticalLayout->addWidget(scrollArea);
 
 
         retranslateUi(MediaInfo);

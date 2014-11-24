@@ -20,8 +20,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[46];
-    char stringdata[533];
+    QByteArrayData data[47];
+    char stringdata[542];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -75,7 +75,8 @@ QT_MOC_LITERAL(41, 454, 8),
 QT_MOC_LITERAL(42, 463, 24),
 QT_MOC_LITERAL(43, 488, 17),
 QT_MOC_LITERAL(44, 506, 19),
-QT_MOC_LITERAL(45, 526, 5)
+QT_MOC_LITERAL(45, 526, 5),
+QT_MOC_LITERAL(46, 532, 8)
     },
     "MainWindow\0spectrumChanged\0\0"
     "QVector<double>&\0sample\0positionChanged\0"
@@ -92,7 +93,7 @@ QT_MOC_LITERAL(45, 526, 5)
     "spectrumAvailable\0QVector<double>\0"
     "spectrum\0metaDataAvailableChanged\0"
     "mediaStateChanged\0QMediaPlayer::State\0"
-    "state\0"
+    "state\0readNews\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -102,7 +103,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      22,   14, // methods
+      23,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -110,30 +111,31 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,  124,    2, 0x06,
-       5,    1,  127,    2, 0x06,
-       7,    2,  130,    2, 0x06,
-      10,    1,  135,    2, 0x06,
-      12,    1,  138,    2, 0x06,
-      14,    1,  141,    2, 0x06,
+       1,    1,  129,    2, 0x06,
+       5,    1,  132,    2, 0x06,
+       7,    2,  135,    2, 0x06,
+      10,    1,  140,    2, 0x06,
+      12,    1,  143,    2, 0x06,
+      14,    1,  146,    2, 0x06,
 
  // slots: name, argc, parameters, tag, flags
-      15,    1,  144,    2, 0x0a,
-      17,    0,  147,    2, 0x0a,
-      18,    0,  148,    2, 0x0a,
-      19,    1,  149,    2, 0x0a,
-      21,    1,  152,    2, 0x0a,
-      24,    2,  155,    2, 0x0a,
-      27,    0,  160,    2, 0x0a,
-      28,    0,  161,    2, 0x0a,
-      29,    1,  162,    2, 0x0a,
-      31,    0,  165,    2, 0x0a,
-      32,    1,  166,    2, 0x0a,
-      35,    1,  169,    2, 0x0a,
-      37,    1,  172,    2, 0x0a,
-      39,    1,  175,    2, 0x0a,
-      42,    1,  178,    2, 0x0a,
-      43,    1,  181,    2, 0x0a,
+      15,    1,  149,    2, 0x0a,
+      17,    0,  152,    2, 0x0a,
+      18,    0,  153,    2, 0x0a,
+      19,    1,  154,    2, 0x0a,
+      21,    1,  157,    2, 0x0a,
+      24,    2,  160,    2, 0x0a,
+      27,    0,  165,    2, 0x0a,
+      28,    0,  166,    2, 0x0a,
+      29,    1,  167,    2, 0x0a,
+      31,    0,  170,    2, 0x0a,
+      32,    1,  171,    2, 0x0a,
+      35,    1,  174,    2, 0x0a,
+      37,    1,  177,    2, 0x0a,
+      39,    1,  180,    2, 0x0a,
+      42,    1,  183,    2, 0x0a,
+      43,    1,  186,    2, 0x0a,
+      46,    0,  189,    2, 0x0a,
 
  // signals: parameters
     QMetaType::Int, 0x80000000 | 3,    4,
@@ -160,6 +162,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void, 0x80000000 | 40,   41,
     QMetaType::Void, QMetaType::Bool,    2,
     QMetaType::Void, 0x80000000 | 44,   45,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -197,6 +200,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 19: _t->spectrumAvailable((*reinterpret_cast< QVector<double>(*)>(_a[1]))); break;
         case 20: _t->metaDataAvailableChanged((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 21: _t->mediaStateChanged((*reinterpret_cast< QMediaPlayer::State(*)>(_a[1]))); break;
+        case 22: _t->readNews(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -298,13 +302,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 22)
+        if (_id < 23)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 22;
+        _id -= 23;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 22)
+        if (_id < 23)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 22;
+        _id -= 23;
     }
     return _id;
 }

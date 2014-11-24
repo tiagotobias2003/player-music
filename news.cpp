@@ -1,10 +1,11 @@
 #include <QCoreApplication>
-#include "music_info.h"
+#include "news.h"
 #include <QDebug>
+#include <QArrayData>
 
 
 // constructor
-Music_info::Music_info()
+news::news()
 {
 
     // signal finish(), calls downloadFinished()
@@ -12,21 +13,26 @@ Music_info::Music_info()
             this, SLOT(downloadFinished(QNetworkReply*)));
 }
 
-void Music_info::search(QString artist, QString music)
+void news::search()
 {
-        QString busca = "http://api.vagalume.com.br/search.php?art="+artist+"&mus="+music;
+        QString busca = "http://www.vagalume.com.br/news/index.js";
         QByteArray newbusca = busca.toLatin1();
         QUrl url = QUrl::fromEncoded(newbusca);
         doDownload(url);
 }
 
-QString Music_info::getLetra()
+QList<notice> news::getNews()
 {
-    return letra;
+    return notices;
+}
+
+int news::getAmount()
+{
+    return amount;
 }
 
 // Constructs a QList of QNetworkReply
-void Music_info::doDownload(const QUrl &url)
+void news::doDownload(const QUrl &url)
 {
     QNetworkRequest request(url);
     QNetworkReply *reply = manager.get(request);
@@ -39,10 +45,10 @@ void Music_info::doDownload(const QUrl &url)
     currentDownloads.append(reply);
 }
 
-void Music_info::downloadFinished(QNetworkReply *reply)
+void news::downloadFinished(QNetworkReply *reply)
 {
     QUrl url = reply->url();
-    //deb << this->letra.toUtf8();
+    //deb << this->contents.toUtf8();
     if (reply->error()) {
         fprintf(stderr, "Download of %s failed: %s\n",
                 url.toEncoded().constData(),
@@ -56,21 +62,33 @@ void Music_info::downloadFinished(QNetworkReply *reply)
 
     if (currentDownloads.isEmpty())
     {
-        letra = (QString)reply->readAll();
+       QString contents = (QString)reply->readAll();
 
-        QJsonDocument document = QJsonDocument::fromJson(letra.toUtf8());
+        QJsonDocument document = QJsonDocument::fromJson(contents.toUtf8());
         // The document wrap a jsonObject
         QJsonObject jsonObj = document.object();
-        QJsonArray item = jsonObj ["mus"].toArray();
-        QJsonObject music = item[0].toObject();
-        letra = music["text"].toString();
+        QJsonValue value =  jsonObj.value(QString("news"));
+        QJsonArray array = value.toArray();
+        amount = array.size();
+        for(int i = 0; i < array.size(); i++)
+        {
+            QJsonObject item = array[i].toObject();
+            QJsonValue headline =  item.value(QString("headline"));
+            QJsonValue url =  item.value(QString("url"));
+            QJsonValue pic =  item.value(QString("pic_src"));
+            notice newNotice;
+            newNotice.setHeadLine(headline.toString());
+            newNotice.setUrl(url.toString());
+            newNotice.setPicture(pic.toString());
+            notices.append(newNotice);
+        }
         emit ready();
     }
         // all downloads finished
         //QCoreApplication::instance()->quit();
 }
 
-void Music_info::sslErrors(const QList<QSslError> &sslErrors)
+void news::sslErrors(const QList<QSslError> &sslErrors)
 {
 #ifndef QT_NO_SSL
     foreach (const QSslError &error, sslErrors)
