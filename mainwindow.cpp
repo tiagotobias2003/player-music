@@ -137,7 +137,7 @@ MainWindow::MainWindow(QWidget *parent) :
   connect(ui->control, SIGNAL(volumeSelected(int)),
           player, SLOT(setVolume(int)));
 
-  // calculator is the thead that calcs the ffts we need to display
+  // calculator is the thead that calcs the fft no we need to display
   // every time a new spectrum is available, the calculator
   // emits a calculatedSpectrum signal
   connect(calculator, SIGNAL(calculatedSpectrum(QVector<double>)),
@@ -413,15 +413,20 @@ void MainWindow::readNews()
 {
      QString text;
      conteudo = noticias.getNews();
+     text="<html><body>";
+     ui->textBrowser->setOpenExternalLinks(true);
      for(int i = 0; i < conteudo.size(); i++ )
      {
          QString head  = conteudo.value(i).getHeadLine();
          QString url  = conteudo.value(i).getUrl();
-         QString pic  = conteudo.value(i).getPicture();
-         text = text+"\n"+head+"\n"+url+"\n"+pic+"\n";
+         //QString pic  = conteudo.value(i).getPicture();
+         text = text+"\n"+head+"\n"+
+                 "<p><a target=\"_blank\" href=\""+url+"\">"+"Ver mais"+"</a>"+"</p>";
      }
      //ui->label->setText(text);
-     ui ->NewsLabel ->setText(text);
+     text+="</body></html>";
+     //ui ->NewsLabel ->setText(text);
+     ui->textBrowser->setText(text);
      //qDebug() << text;
 }
 

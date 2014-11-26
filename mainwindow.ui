@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>796</width>
-    <height>521</height>
+    <width>795</width>
+    <height>512</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,119 +23,75 @@
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
-   <widget class="Spectrograph" name="visualizer" native="true">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>10</y>
-      <width>521</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <zorder>widget</zorder>
-   </widget>
-   <widget class="MediaInfo" name="widgetInfo" native="true">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>190</y>
-      <width>541</width>
-      <height>281</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-   </widget>
-   <widget class="QListView" name="listViewPlaylist">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>190</y>
-      <width>211</width>
-      <height>271</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QWidget{color:rgb(206, 206, 206);}</string>
-    </property>
-    <property name="uniformItemSizes">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="Controls" name="control" native="true">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>0</y>
-      <width>221</width>
-      <height>171</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-   </widget>
-   <widget class="QWidget" name="widget" native="true">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>100</y>
-      <width>539</width>
-      <height>99</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <item>
-      <widget class="QScrollArea" name="scrollArea">
-       <property name="sizeAdjustPolicy">
-        <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
-       </property>
-       <property name="widgetResizable">
-        <bool>true</bool>
-       </property>
-       <widget class="QWidget" name="scrollAreaWidgetContents">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>519</width>
-          <height>79</height>
-         </rect>
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="30,70">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_3" stretch="10,90">
+      <item>
+       <widget class="Controls" name="control" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout">
+        <zorder>scrollArea</zorder>
+       </widget>
+      </item>
+      <item>
+       <widget class="QListView" name="listViewPlaylist">
+        <property name="styleSheet">
+         <string notr="true">QWidget{color:rgb(206, 206, 206);}</string>
+        </property>
+        <property name="uniformItemSizes">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_4" stretch="30,30,40">
+      <property name="spacing">
+       <number>8</number>
+      </property>
+      <item>
+       <widget class="Spectrograph" name="visualizer" native="true"/>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget" native="true">
+        <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
-          <widget class="QLabel" name="NewsLabel">
-           <property name="text">
-            <string>TextLabel</string>
-           </property>
-          </widget>
+          <widget class="QTextBrowser" name="textBrowser"/>
          </item>
         </layout>
        </widget>
-      </widget>
-     </item>
-    </layout>
-   </widget>
+      </item>
+      <item>
+       <widget class="MediaInfo" name="widgetInfo" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
    <zorder>visualizer</zorder>
    <zorder>widgetInfo</zorder>
    <zorder>listViewPlaylist</zorder>
    <zorder>control</zorder>
    <zorder>widget</zorder>
-   <zorder>widget</zorder>
+   <zorder>scrollArea</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>796</width>
+     <width>795</width>
      <height>25</height>
     </rect>
    </property>
